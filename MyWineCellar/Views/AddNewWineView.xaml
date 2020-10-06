@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="MyWineCellar.Views.AddNewWineView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyWineCellar.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="8" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" InputScope="Text" PlaceholderText="Producteur" Text="{x:Bind AddNewWineViewModel.Wine.Producer}"/>
+        <TextBox Grid.Row="1" InputScope="Text" PlaceholderText="Pays" Text="{x:Bind AddNewWineViewModel.Wine.Country}"/>
+        <TextBox Grid.Row="2" InputScope="Text" PlaceholderText="Région" Text="{x:Bind AddNewWineViewModel.Wine.Region}"/>
+        <TextBox Grid.Row="3" InputScope="Text" PlaceholderText="Appellation" Text="{x:Bind AddNewWineViewModel.Wine.Appellation}"/>
+        <TextBox Grid.Row="4" InputScope="Text" PlaceholderText="Parcelle" Text="{x:Bind AddNewWineViewModel.Wine.Parcel}"/>
+
+        <StackPanel Grid.Row="5" Orientation="Vertical">
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" InputScope="Number" PlaceholderText="Millésime" Text="{x:Bind AddNewWineViewModel.Wine.Vintage}"/>
+                <TextBox Grid.Column="1" InputScope="Number" PlaceholderText="Quantité" Text="{x:Bind AddNewWineViewModel.Wine.Quantity}"/>
+            </Grid>
+        </StackPanel>
+
+        <ComboBox Grid.Row="6" PlaceholderText="Couleur" HorizontalAlignment="Stretch">
+            <x:String>Rouge</x:String>
+            <x:String>Blanc</x:String>
+            <x:String>Rosé</x:String>
+        </ComboBox>
+
+        <StackPanel Grid.Row="7" Orientation="Vertical">
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" InputScope="CurrencyAmount" PlaceholderText="Prix" Text="{x:Bind AddNewWineViewModel.Wine.Price}"/>
+                <CalendarDatePicker Grid.Column="1" PlaceholderText="Date acquisition" HorizontalAlignment="Stretch" Date="{x:Bind AddNewWineViewModel.Wine.AcquisitionDate}"/>
+            </Grid>
+        </StackPanel>
+
+        <ComboBox Grid.Row="8" PlaceholderText="Moyen acquisition" HorizontalAlignment="Stretch">
+            <x:String>Achat chez le producteur</x:String>
+            <x:String>Achat chez un caviste</x:String>
+            <x:String>Achat en grande surface</x:String>
+            <x:String>Achat sur Internet</x:String>
+            <x:String>Achat sur une foire</x:String>
+            <x:String>Cadeau</x:String>
+        </ComboBox>
+        <Button Grid.Row="9" Content="Ajouter" HorizontalAlignment="Stretch" Command="{x:Bind AddNewWineViewModel.AddNewWineCommand}"/>
+    </Grid>
+</Page>
