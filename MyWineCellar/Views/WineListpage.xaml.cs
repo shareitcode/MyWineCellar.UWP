@@ -5,11 +5,11 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyWineCellar.Views
 {
-    public sealed partial class WineListView : Page
+    public sealed partial class WineListPage : Page
     {
         private readonly WineListViewModel WineListViewModel = new WineListViewModel();
 
-        public WineListView()
+        public WineListPage()
         {
             InitializeComponent();
             this.DataContext = WineListViewModel;
@@ -28,7 +28,7 @@ namespace MyWineCellar.Views
 
         private void AddNewWineButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AddNewWineView));
+            Frame.Navigate(typeof(AddNewWinePage));
         }
     }
 }

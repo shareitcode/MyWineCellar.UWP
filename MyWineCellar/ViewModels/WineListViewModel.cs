@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyWineCellar.Helpers;
 using MyWineCellar.Models;
+using System.Collections.ObjectModel;
 
 namespace MyWineCellar.ViewModels
 {
@@ -20,6 +16,10 @@ namespace MyWineCellar.ViewModels
                 new Wine() {Appellation = "Vin 2", Producer = "Producer 2", Vintage = 2010, Quantity = 6},
                 new Wine() {Appellation = "Vin 3", Producer = "Producer 3", Vintage = 2010, Quantity = 6}
             };
+            if (Session.Instance.IsExist("Wine"))
+            {
+                this.Wines.Add(Session.Instance.Get<Wine>("Wine"));
+            }
         }
     }
 }
