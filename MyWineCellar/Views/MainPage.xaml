@@ -10,7 +10,8 @@
     <Grid>
         <NavigationView x:Name="NavigationView" Header="This is Header Text" PaneDisplayMode="Top" SelectionFollowsFocus="Enabled" IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
-                <NavigationViewItem  Content="Add wine" Tag="SamplePage1"/>
+                <NavigationViewItem  Content="Wines" Tag="WineList"/>
+                <NavigationViewItem  Content="Add wine" Tag="AddNewWine"/>
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame"/>
         </NavigationView>
