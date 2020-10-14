@@ -1,19 +1,42 @@
-﻿<Page
-    x:Class="MyWineCellar.Views.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MyWineCellar.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
-        <NavigationView x:Name="NavigationView" Header="This is Header Text" PaneDisplayMode="Top" SelectionFollowsFocus="Enabled" IsBackButtonVisible="Collapsed">
-            <NavigationView.MenuItems>
-                <NavigationViewItem  Content="Wines" Tag="WineList"/>
-                <NavigationViewItem  Content="Add wine" Tag="AddNewWine"/>
-            </NavigationView.MenuItems>
+﻿<Page x:Class="MyWineCellar.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+      xmlns:helpers="using:MyWineCellar.Helpers"
+      xmlns:views="using:MyWineCellar.Views"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <i:Interaction.Behaviors>
+        <ic:EventTriggerBehavior EventName="Loaded">
+            <ic:InvokeCommandAction Command="{x:Bind MainViewModel.LoadedCommand}" />
+        </ic:EventTriggerBehavior>
+    </i:Interaction.Behaviors>
+
+    <winui:NavigationView x:Name="NavigationView"
+                              Header="This is Header Text"
+                              PaneDisplayMode="Top"
+                              SelectionFollowsFocus="Enabled"
+                              IsBackButtonVisible="Visible"
+                              IsBackEnabled="{x:Bind MainViewModel.IsBackEnabled, Mode=OneWay}"
+                              SelectedItem="{x:Bind MainViewModel.Selected, Mode=OneWay}">
+        <winui:NavigationView.MenuItems>
+            <winui:NavigationViewItem x:Uid="Main_WineList" helpers:NavigationHelper.NavigateTo="views:WineListPage"/>
+            <winui:NavigationViewItem x:Uid="Main_AddNewWine" helpers:NavigationHelper.NavigateTo="views:AddNewWinePage"/>
+        </winui:NavigationView.MenuItems>
+
+        <i:Interaction.Behaviors>
+            <ic:EventTriggerBehavior EventName="ItemInvoked">
+                <ic:InvokeCommandAction Command="{x:Bind MainViewModel.ItemInvokedCommand}" />
+            </ic:EventTriggerBehavior>
+        </i:Interaction.Behaviors>
+
+        <Grid>
             <Frame x:Name="ContentFrame"/>
-        </NavigationView>
-    </Grid>
+        </Grid>
+    </winui:NavigationView>
 </Page>
