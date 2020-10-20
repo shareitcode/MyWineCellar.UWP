@@ -1,5 +1,4 @@
 ﻿using MyWineCellar.ViewModels;
-using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
 namespace MyWineCellar.Views
@@ -12,17 +11,9 @@ namespace MyWineCellar.Views
 		{
 			this.InitializeComponent();
 			this.DataContext = this.WineListViewModel;
-			SystemNavigationManager.GetForCurrentView().BackRequested += this.WineListView_BackRequested;
+			this.Loading += this.WineListPage_Loading;
 		}
 
-		private void WineListView_BackRequested(object sender, BackRequestedEventArgs e)
-		{
-			if (this.Frame.CanGoBack)
-			{
-				SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-				this.Frame.GoBack();
-				e.Handled = true;
-			}
-		}
+		private async void WineListPage_Loading(Windows.UI.Xaml.FrameworkElement sender, object args) => await this.WineListViewModel.Initialize();
 	}
 }
