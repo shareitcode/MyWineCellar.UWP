@@ -4,10 +4,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:MyWineCellar.Models"
+    xmlns:models="using:MyWineCellar.DTO"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-	<ListView ItemsSource="{x:Bind WineListViewModel.Wines}" HorizontalContentAlignment="Stretch">
+	<ListView ItemsSource="{x:Bind WineListViewModel.Wines, Mode=OneWay}" HorizontalContentAlignment="Stretch">
 		<ListView.ItemContainerStyle>
 			<Style TargetType="ListViewItem">
 				<Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -15,7 +15,7 @@
 			</Style>
 		</ListView.ItemContainerStyle>
 		<ListView.ItemTemplate>
-			<DataTemplate x:DataType="models:Wine">
+			<DataTemplate x:DataType="models:WineDto">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="*"/>
