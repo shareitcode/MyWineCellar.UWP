@@ -65,6 +65,12 @@
 			<x:String>Cadeau</x:String>
 		</ComboBox>
 		<controls:InAppNotification x:Name="InAppNotification" Grid.Row="0" Grid.RowSpan="9" Background="#8fff5353" BorderBrush="Transparent" Content="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Visibility="{x:Bind AddNewWineViewModel.ErrorMessageIsVisible, Mode=OneWay}" ShowDismissButton="True" Closed="InAppNotification_OnClosed"/>
-		<Button x:Name="ButtonAddNewWine" Grid.Row="9" Content="Ajouter" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Command="{x:Bind AddNewWineViewModel.AddNewWineCommand, Mode=OneWay}"/>
+		<Button x:Name="ButtonAddNewWine"
+		        Grid.Row="9"
+		        Content="Ajouter"
+		        HorizontalAlignment="Stretch"
+		        VerticalAlignment="Bottom"
+		        Command="{x:Bind AddNewWineViewModel.AddNewWineCommand, Mode=OneWay}"
+		        IsEnabled="{x:Bind AddNewWineViewModel.AddNewWineButtonIsEnabled, Mode=OneWay}"/>
 	</Grid>
 </Page>
