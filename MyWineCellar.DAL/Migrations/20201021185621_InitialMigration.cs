@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyWineCellar.DataAccessLayer.Migrations
+namespace MyWineCellar.DAL.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,17 +13,17 @@ namespace MyWineCellar.DataAccessLayer.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Producer = table.Column<string>(nullable: true),
+                    Producer = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: true),
-                    Region = table.Column<string>(nullable: true),
-                    Appellation = table.Column<string>(nullable: true),
-                    Parcel = table.Column<string>(nullable: true),
-                    Vintage = table.Column<short>(nullable: false),
+                    Region = table.Column<string>(nullable: false),
+                    Appellation = table.Column<string>(nullable: false),
+                    Parcel = table.Column<string>(nullable: false),
+                    Vintage = table.Column<short>(maxLength: 4, nullable: false),
                     Quantity = table.Column<short>(nullable: false),
-                    Color = table.Column<string>(nullable: true),
+                    Color = table.Column<string>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     AcquisitionDate = table.Column<DateTime>(nullable: false),
-                    AcquisitionMeans = table.Column<string>(nullable: true)
+                    AcquisitionMeans = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

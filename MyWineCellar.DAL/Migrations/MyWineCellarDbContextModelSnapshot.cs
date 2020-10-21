@@ -16,7 +16,7 @@ namespace MyWineCellar.DAL.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
-            modelBuilder.Entity("MyWineCellar.DataAccessLayer.Models.Wine", b =>
+            modelBuilder.Entity("MyWineCellar.DAL.Models.Wine", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -26,34 +26,41 @@ namespace MyWineCellar.DAL.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AcquisitionMeans")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Appellation")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Color")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Parcel")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
                     b.Property<string>("Producer")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Quantity")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Region")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<short>("Vintage")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasMaxLength(4);
 
                     b.HasKey("Id");
 
