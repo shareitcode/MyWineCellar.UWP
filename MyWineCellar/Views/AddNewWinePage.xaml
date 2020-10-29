@@ -1,71 +1,98 @@
 ﻿<Page
     x:Class="MyWineCellar.Views.AddNewWinePage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:converters="using:MyWineCellar.Converters"
+	mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Page.Resources>
+		<converters:BooleanToVisibleConverter x:Key="ErrorMessageVisible" />
+	</Page.Resources>
 
 	<Grid Padding="8" RowSpacing="8">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"></RowDefinition>
 			<RowDefinition Height="Auto"></RowDefinition>
 			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-        <TextBox x:Name="TextBoxProducer" Grid.Row="0" Header="Producteur *" InputScope="Text" PlaceholderText="Producteur" BorderBrush="{x:Bind AddNewWineViewModel.TextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-		         Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay}" Description="{x:Bind AddNewWineViewModel.ProducerErrorMessage, Mode=OneWay}"/>
-        <TextBox x:Name="TextBoxCountry" Grid.Row="1" Header="Pays *" InputScope="Text" PlaceholderText="Pays" Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay}"/>
-		<TextBox x:Name="TextBoxRegion" Grid.Row="2" Header="Région *" InputScope="Text" PlaceholderText="Région" Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay}"/>
-		<TextBox x:Name="TextBoxApellation" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Appellation" Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}"/>
-		<TextBox x:Name="TextBoxParcelle" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Parcelle" Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}"/>
+		<StackPanel Grid.Row="0" Orientation="Vertical">
+			<Grid RowSpacing="8">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="5" Orientation="Vertical">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="2*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBox x:Name="TextBoxProducer" Grid.Column="1"  Grid.Row="0" Header="Producteur *" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
+					         BorderBrush="{x:Bind AddNewWineViewModel.ProducerTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
+					         Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay}" >
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ProducerErrorMessage, Mode=OneWay}" Foreground="Red"
+							           Visibility="{x:Bind AddNewWineViewModel.ErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Name="TextBoxCountry" Grid.Column="1" Grid.Row="1" Header="Pays *" InputScope="Text" PlaceholderText="France"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay}"/>
+				<TextBox x:Name="TextBoxRegion" Grid.Column="1" Grid.Row="2" Header="Région *" InputScope="Text" PlaceholderText="Gironde"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay}"/>
+				<TextBox x:Name="TextBoxApellation" Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}"/>
+				<TextBox x:Name="TextBoxParcelle" Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}"/>
+			</Grid>
+		</StackPanel>
+
+		<StackPanel Grid.Row="1" Orientation="Vertical">
+			<Grid ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBox Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="20000" Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay}"/>
+				<TextBox Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="6" Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay}"/>
+				<ComboBox Grid.Column="2" Header="Couleur *" PlaceholderText="Couleur" HorizontalAlignment="Stretch">
+					<x:String>Rouge</x:String>
+					<x:String>Blanc</x:String>
+					<x:String>Rosé</x:String>
+				</ComboBox>
+				<TextBox Grid.Column="3" Header="Prix" InputScope="CurrencyAmount" PlaceholderText="20" Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay}"/>
+			</Grid>
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" Orientation="Vertical">
 			<Grid ColumnSpacing="8">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<TextBox Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="Millésime" Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay}"/>
-				<TextBox Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="Quantité" Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay}"/>
+				<CalendarDatePicker Grid.Column="0" Header="Date acquisition *" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch"/>
+				<ComboBox Grid.Column="1" Header="Moyen acquisition *" PlaceholderText="Moyen acquisition" HorizontalAlignment="Stretch">
+					<x:String>Achat chez le producteur</x:String>
+					<x:String>Achat chez un caviste</x:String>
+					<x:String>Achat en grande surface</x:String>
+					<x:String>Achat sur Internet</x:String>
+					<x:String>Achat sur une foire</x:String>
+					<x:String>Cadeau</x:String>
+				</ComboBox>
 			</Grid>
 		</StackPanel>
 
-		<ComboBox Grid.Row="6" Header="Couleur *" PlaceholderText="Couleur" HorizontalAlignment="Stretch">
-			<x:String>Rouge</x:String>
-			<x:String>Blanc</x:String>
-			<x:String>Rosé</x:String>
-		</ComboBox>
-
-		<StackPanel Grid.Row="7" Orientation="Vertical">
-			<Grid ColumnSpacing="8">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-				</Grid.ColumnDefinitions>
-				<TextBox Grid.Column="0" Header="Prix" InputScope="CurrencyAmount" PlaceholderText="Prix" Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay}"/>
-				<CalendarDatePicker Grid.Column="1" Header="Date acquisition *" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch"/>
-			</Grid>
-		</StackPanel>
-
-		<ComboBox Grid.Row="8" Header="Moyen acquisition *" PlaceholderText="Moyen acquisition" HorizontalAlignment="Stretch">
-			<x:String>Achat chez le producteur</x:String>
-			<x:String>Achat chez un caviste</x:String>
-			<x:String>Achat en grande surface</x:String>
-			<x:String>Achat sur Internet</x:String>
-			<x:String>Achat sur une foire</x:String>
-			<x:String>Cadeau</x:String>
-		</ComboBox>
 		<Button x:Name="ButtonAddNewWine"
-		        Grid.Row="9"
+		        Grid.Row="3"
 		        Content="Ajouter"
 		        HorizontalAlignment="Stretch"
 		        VerticalAlignment="Bottom"
