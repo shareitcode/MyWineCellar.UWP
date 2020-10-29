@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Controls;
-using MyWineCellar.ViewModels;
+﻿using MyWineCellar.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 namespace MyWineCellar.Views
@@ -13,7 +12,5 @@ namespace MyWineCellar.Views
 			this.InitializeComponent();
 			this.DataContext = this.AddNewWineViewModel;
 		}
-
-		private void InAppNotification_OnClosed(object sender, InAppNotificationClosedEventArgs e) => this.AddNewWineViewModel.ErrorMessageIsVisible = false;
 	}
 }
