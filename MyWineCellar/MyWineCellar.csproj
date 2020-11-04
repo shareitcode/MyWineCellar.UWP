@@ -130,6 +130,8 @@
     </Compile>
     <Compile Include="Converters\BooleanToNavigationViewBackButtonVisibleConverter.cs" />
     <Compile Include="Converters\BooleanToVisibleConverter.cs" />
+    <Compile Include="Converters\DoubleToStringConverter.cs" />
+    <Compile Include="Converters\ShortToStringEmptyConverter.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\UserInterfaceHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
