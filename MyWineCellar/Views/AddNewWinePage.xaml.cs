@@ -23,6 +23,8 @@ namespace MyWineCellar.Views
 			this.SetBehaviorsForRegionTextBox();
 			this.SetBehaviorsForAppellationTextBox();
 			this.SetBehaviorsForParcelTextBox();
+			this.SetBehaviorsForVintageTextBox();
+			this.SetBehaviorsForQuantityTextBox();
 		}
 
 		private void SetBehaviorsForProducerTextBox() => Interaction.SetBehaviors(this.TextBoxProducer, new BehaviorCollection
@@ -70,7 +72,7 @@ namespace MyWineCellar.Views
 				}
 		});
 
-		private void SetBehaviorsForAppellationTextBox() => Interaction.SetBehaviors(this.TextBoxApellation, new BehaviorCollection
+		private void SetBehaviorsForAppellationTextBox() => Interaction.SetBehaviors(this.TextBoxAppellation, new BehaviorCollection
 		{
 				new EventTriggerBehavior
 				{
@@ -85,7 +87,7 @@ namespace MyWineCellar.Views
 				}
 		});
 
-		private void SetBehaviorsForParcelTextBox() => Interaction.SetBehaviors(this.TextBoxParcelle, new BehaviorCollection
+		private void SetBehaviorsForParcelTextBox() => Interaction.SetBehaviors(this.TextBoxParcel, new BehaviorCollection
 		{
 				new EventTriggerBehavior
 				{
@@ -95,6 +97,36 @@ namespace MyWineCellar.Views
 								new InvokeCommandAction
 								{
 										Command = this.AddNewWineViewModel.CheckParcelValidityCommand
+								}
+						}
+				}
+		});
+
+		private void SetBehaviorsForVintageTextBox() => Interaction.SetBehaviors(this.TextBoxVintage, new BehaviorCollection
+		{
+				new EventTriggerBehavior
+				{
+						EventName = "LostFocus",
+						Actions =
+						{
+								new InvokeCommandAction
+								{
+										Command = this.AddNewWineViewModel.CheckVintageValidityCommand
+								}
+						}
+				}
+		});
+
+		private void SetBehaviorsForQuantityTextBox() => Interaction.SetBehaviors(this.TextBoxQuantity, new BehaviorCollection
+		{
+				new EventTriggerBehavior
+				{
+						EventName = "LostFocus",
+						Actions =
+						{
+								new InvokeCommandAction
+								{
+										Command = this.AddNewWineViewModel.CheckQuantityValidityCommand
 								}
 						}
 				}

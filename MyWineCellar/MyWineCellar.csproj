@@ -134,6 +134,7 @@
     <Compile Include="Converters\ShortToStringEmptyConverter.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\UserInterfaceHelper.cs" />
+    <Compile Include="Models\WineColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Session.cs" />
     <Compile Include="Services\NavigationService.cs" />
