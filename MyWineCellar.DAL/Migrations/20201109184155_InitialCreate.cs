@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyWineCellar.DAL.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace MyWineCellar.DAL.Migrations
                     Parcel = table.Column<string>(nullable: false),
                     Vintage = table.Column<short>(maxLength: 4, nullable: false),
                     Quantity = table.Column<short>(nullable: false),
-                    Color = table.Column<string>(nullable: false),
+                    Color = table.Column<short>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     AcquisitionDate = table.Column<DateTime>(nullable: false),
                     AcquisitionMeans = table.Column<string>(nullable: false)

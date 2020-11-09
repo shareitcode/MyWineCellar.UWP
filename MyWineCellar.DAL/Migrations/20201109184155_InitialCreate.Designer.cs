@@ -9,8 +9,8 @@ using MyWineCellar.DAL;
 namespace MyWineCellar.DAL.Migrations
 {
     [DbContext(typeof(MyWineCellarDbContext))]
-    [Migration("20201021185621_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201109184155_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,9 +35,8 @@ namespace MyWineCellar.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<short>("Color")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");

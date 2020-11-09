@@ -33,9 +33,8 @@ namespace MyWineCellar.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<short>("Color")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");
