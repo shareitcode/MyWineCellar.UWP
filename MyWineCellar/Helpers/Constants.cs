@@ -11,6 +11,6 @@ namespace MyWineCellar.Helpers
 				ResourceLoader.GetForViewIndependentUse().GetString("AddNewWine_WineColorRose")
 		};
 
-		internal static string ErrorMessageTheFieldCannotBeEmpty { get; } = ResourceLoader.GetForViewIndependentUse().GetString("ErrorMessage_TheFieldCannotBeEmpty");
+		internal static string ErrorMessageTheFieldCannotBeEmpty { get; } = ResourceLoader.GetForViewIndependentUse().GetString("ErrorMessage_TheFieldCannotBeEmpty.Text");
 	}
 }
