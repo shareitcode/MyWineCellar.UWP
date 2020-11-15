@@ -55,19 +55,19 @@ namespace MyWineCellar.Controls
 
 		private void TextBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
-			if (sender is TextBox senderAsString)
+			if (sender is TextBox senderAsTextBox)
 			{
-				if (string.IsNullOrEmpty(senderAsString.Text))
+				if (string.IsNullOrEmpty(senderAsTextBox.Text))
 				{
 					this.TextBlock.Visibility = Visibility.Visible;
 					this.TextBox.BorderBrush = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFFF0000");
-					this.IsValidate = false;
+					this.IsValidate = true;
 				}
 				else
 				{
 					this.TextBlock.Visibility = Visibility.Collapsed;
 					this.TextBox.BorderBrush = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
-					this.IsValidate = true;
+					this.IsValidate = false;
 				}
 			}
 		}

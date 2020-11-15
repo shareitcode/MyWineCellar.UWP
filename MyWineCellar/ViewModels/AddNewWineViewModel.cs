@@ -1,5 +1,5 @@
-﻿using MyWineCellar.DTO;
-using MyWineCellar.Helpers;
+﻿using MyWineCellar.Helpers;
+using MyWineCellar.Models;
 using MyWineCellar.Services;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace MyWineCellar.ViewModels
 {
 	internal sealed class AddNewWineViewModel : BaseViewModel
 	{
-		public WineDto Wine { get; set; } = new WineDto();
+		public Wine Wine { get; set; } = new Wine();
 
 		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
 
@@ -28,53 +28,81 @@ namespace MyWineCellar.ViewModels
 			set => this.Set(ref this._addNewWineButtonIsEnabled, value);
 		}
 
-		private bool _producerErrorMessageIsVisible;
+		private bool _producerErrorMessageIsVisible = true;
 		public bool ProducerErrorMessageIsVisible
 		{
 			get => this._producerErrorMessageIsVisible;
-			set => this.Set(ref this._producerErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._producerErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _countryErrorMessageIsVisible;
+		private bool _countryErrorMessageIsVisible = true;
 		public bool CountryErrorMessageIsVisible
 		{
 			get => this._countryErrorMessageIsVisible;
-			set => this.Set(ref this._countryErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._countryErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _regionErrorMessageIsVisible;
+		private bool _regionErrorMessageIsVisible = true;
 		public bool RegionErrorMessageIsVisible
 		{
 			get => this._regionErrorMessageIsVisible;
-			set => this.Set(ref this._regionErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._regionErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _appellationErrorMessageIsVisible;
+		private bool _appellationErrorMessageIsVisible = true;
 		public bool AppellationErrorMessageIsVisible
 		{
 			get => this._appellationErrorMessageIsVisible;
-			set => this.Set(ref this._appellationErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._appellationErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _parcelErrorMessageIsVisible;
+		private bool _parcelErrorMessageIsVisible = true;
 		public bool ParcelErrorMessageIsVisible
 		{
 			get => this._parcelErrorMessageIsVisible;
-			set => this.Set(ref this._parcelErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._parcelErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _vintageErrorMessageIsVisible;
+		private bool _vintageErrorMessageIsVisible = true;
 		public bool VintageErrorMessageIsVisible
 		{
 			get => this._vintageErrorMessageIsVisible;
-			set => this.Set(ref this._vintageErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._vintageErrorMessageIsVisible, value);
+			}
 		}
 
-		private bool _quantityErrorMessageIsVisible;
+		private bool _quantityErrorMessageIsVisible = true;
 		public bool QuantityErrorMessageIsVisible
 		{
 			get => this._quantityErrorMessageIsVisible;
-			set => this.Set(ref this._quantityErrorMessageIsVisible, value);
+			set
+			{
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+				this.Set(ref this._quantityErrorMessageIsVisible, value);
+			}
 		}
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
@@ -83,7 +111,7 @@ namespace MyWineCellar.ViewModels
 		{
 			try
 			{
-				WineDto wine = this.Wine;
+				Wine wine = this.Wine;
 				//await WineRepository.Add(this.Wine);
 				NavigationService.GoBack();
 			}
@@ -92,5 +120,9 @@ namespace MyWineCellar.ViewModels
 				Console.WriteLine(e);
 			}
 		}
+
+		private bool AllEntriesAreValid() => !(this.ProducerErrorMessageIsVisible && this.CountryErrorMessageIsVisible && this.RegionErrorMessageIsVisible
+											&& this.AppellationErrorMessageIsVisible && this.ParcelErrorMessageIsVisible && this.VintageErrorMessageIsVisible
+											&& this.QuantityErrorMessageIsVisible);
 	}
 }
