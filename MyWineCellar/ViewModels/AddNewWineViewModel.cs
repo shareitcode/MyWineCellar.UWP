@@ -10,7 +10,7 @@ namespace MyWineCellar.ViewModels
 {
 	internal sealed class AddNewWineViewModel : BaseViewModel
 	{
-		public Wine Wine { get; set; } = new Wine();
+		public AddWineModel Wine { get; set; } = new AddWineModel();
 
 		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
 
@@ -34,8 +34,8 @@ namespace MyWineCellar.ViewModels
 			get => this._producerErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._producerErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -45,8 +45,8 @@ namespace MyWineCellar.ViewModels
 			get => this._countryErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._countryErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -56,8 +56,8 @@ namespace MyWineCellar.ViewModels
 			get => this._regionErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._regionErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -67,8 +67,8 @@ namespace MyWineCellar.ViewModels
 			get => this._appellationErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._appellationErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -78,8 +78,8 @@ namespace MyWineCellar.ViewModels
 			get => this._parcelErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._parcelErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -89,8 +89,8 @@ namespace MyWineCellar.ViewModels
 			get => this._vintageErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._vintageErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -100,8 +100,8 @@ namespace MyWineCellar.ViewModels
 			get => this._quantityErrorMessageIsVisible;
 			set
 			{
-				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 				this.Set(ref this._quantityErrorMessageIsVisible, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
@@ -111,7 +111,7 @@ namespace MyWineCellar.ViewModels
 		{
 			try
 			{
-				Wine wine = this.Wine;
+				AddWineModel wine = this.Wine;
 				//await WineRepository.Add(this.Wine);
 				NavigationService.GoBack();
 			}
@@ -121,8 +121,8 @@ namespace MyWineCellar.ViewModels
 			}
 		}
 
-		private bool AllEntriesAreValid() => !(this.ProducerErrorMessageIsVisible && this.CountryErrorMessageIsVisible && this.RegionErrorMessageIsVisible
-											&& this.AppellationErrorMessageIsVisible && this.ParcelErrorMessageIsVisible && this.VintageErrorMessageIsVisible
-											&& this.QuantityErrorMessageIsVisible);
-	}
+        private bool AllEntriesAreValid() => !this.ProducerErrorMessageIsVisible && !this.CountryErrorMessageIsVisible && !this.RegionErrorMessageIsVisible
+											 && !this.AppellationErrorMessageIsVisible && !this.ParcelErrorMessageIsVisible && !this.VintageErrorMessageIsVisible
+											 && !this.QuantityErrorMessageIsVisible;
+    }
 }
