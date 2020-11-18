@@ -12,9 +12,9 @@ namespace MyWineCellar.Models
 		public string Parcel { get; set; }
 		public short? Vintage { get; set; }
 		public short? Quantity { get; set; }
-		public short? Color { get; set; }
+		public short Color { get; set; }
 		public double? Price { get; set; }
 		public DateTimeOffset AcquisitionDate { get; set; } = DateTimeOffset.Now;
-		public string AcquisitionMeans { get; set; }
+		public short AcquisitionMeans { get; set; }
 	}
 }

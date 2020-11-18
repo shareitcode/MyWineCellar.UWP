@@ -37,19 +37,19 @@
 					<ColumnDefinition Width="2*"/>
 				</Grid.ColumnDefinitions>
 
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderProducer" Grid.Column="1"  Grid.Row="0" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
+				<controls:TextBoxValidator x:Uid="EntryProducer" Grid.Column="1"  Grid.Row="0" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.ProducerErrorMessageIsVisible, Mode=TwoWay}"/>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderCountry" Grid.Column="1" Grid.Row="1" InputScope="Text" PlaceholderText="France"
+				<controls:TextBoxValidator x:Uid="EntryCountry" Grid.Column="1" Grid.Row="1" InputScope="Text" PlaceholderText="France"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.CountryErrorMessageIsVisible, Mode=TwoWay}"/>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderRegion" Grid.Column="1" Grid.Row="2" InputScope="Text" PlaceholderText="Gironde"
+				<controls:TextBoxValidator x:Uid="EntryRegion" Grid.Column="1" Grid.Row="2" InputScope="Text" PlaceholderText="Gironde"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.RegionErrorMessageIsVisible, Mode=TwoWay}"/>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderAppellation" Grid.Column="1" Grid.Row="3" InputScope="Text" PlaceholderText="Haut-Médoc"
+				<controls:TextBoxValidator x:Uid="EntryAppellation" Grid.Column="1" Grid.Row="3" InputScope="Text" PlaceholderText="Haut-Médoc"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.AppellationErrorMessageIsVisible, Mode=TwoWay}"/>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderParcel" Grid.Column="1" Grid.Row="4" InputScope="Text" PlaceholderText="Cru Bourgeois"
+				<controls:TextBoxValidator x:Uid="EntryParcel" Grid.Column="1" Grid.Row="4" InputScope="Text" PlaceholderText="Cru Bourgeois"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.ParcelErrorMessageIsVisible, Mode=TwoWay}"/>
 			</Grid>
@@ -63,16 +63,16 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderVintage" Grid.Column="0" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
+				<controls:TextBoxValidator x:Uid="EntryVintage" Grid.Column="0" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ShortConverter}}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.VintageErrorMessageIsVisible, Mode=TwoWay}"/>
-				<controls:TextBoxValidator x:Uid="AddNewWine_EntryHeaderQuantity" Grid.Column="1" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
+				<controls:TextBoxValidator x:Uid="EntryQuantity" Grid.Column="1" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ShortConverter}}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.QuantityErrorMessageIsVisible, Mode=TwoWay}"/>
-				<ComboBox x:Uid="AddNewWine_EntryHeaderColor" Grid.Column="2" PlaceholderText="Couleur" HorizontalAlignment="Stretch"
+				<ComboBox x:Uid="EntryColor" Grid.Column="2" PlaceholderText="Couleur" HorizontalAlignment="Stretch"
 				          ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
-				          SelectedIndex="{x:Bind AddNewWineViewModel.WineColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-				<TextBox x:Uid="AddNewWine_EntryHeaderPrice" Grid.Column="3" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
+				          SelectedIndex="{x:Bind AddNewWineViewModel.Wine.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+				<TextBox x:Uid="EntryPrice" Grid.Column="3" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay, Converter={StaticResource DoubleConverter}}"/>
 			</Grid>
 		</StackPanel>
@@ -83,17 +83,12 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<CalendarDatePicker x:Uid="AddNewWine_EntryHeaderAcquisitionDate" Grid.Column="0" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch"
+				<CalendarDatePicker x:Uid="EntryAcquisitionDate" Grid.Column="0" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch"
 				                    Date="{x:Bind AddNewWineViewModel.Wine.AcquisitionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-				<ComboBox Grid.Column="1" Header="Moyen acquisition *" PlaceholderText="Moyen acquisition" HorizontalAlignment="Stretch">
-					<x:String>Achat chez le producteur</x:String>
-					<x:String>Achat chez un caviste</x:String>
-					<x:String>Achat en grande surface</x:String>
-					<x:String>Achat sur Internet</x:String>
-					<x:String>Achat sur une foire</x:String>
-					<x:String>Cadeau</x:String>
-				</ComboBox>
-			</Grid>
+                <ComboBox x:Uid="EntryAcquisitionMeans" Grid.Column="1" HorizontalAlignment="Stretch"
+                          ItemsSource="{x:Bind AddNewWineViewModel.AcquisitionMeans, Mode=OneWay}"
+                          SelectedIndex="{x:Bind AddNewWineViewModel.Wine.AcquisitionMeans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
 		</StackPanel>
 
 		<Button Grid.Row="3"
