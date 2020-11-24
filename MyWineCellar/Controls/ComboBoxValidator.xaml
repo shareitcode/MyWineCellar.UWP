@@ -1,0 +1,12 @@
+﻿<UserControl
+    x:Class="MyWineCellar.Controls.ComboBoxValidator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ComboBox ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+              SelectedIndex="{x:Bind SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              LostFocus="ComboBox_LostFocus">
+        <ComboBox.Description>
+            <TextBlock x:Uid="ErrorMessage_TheFieldCannotBeEmpty" x:Name="TextBlock" Foreground="Red" Visibility="Collapsed"/>
+        </ComboBox.Description>
+    </ComboBox>
+</UserControl>

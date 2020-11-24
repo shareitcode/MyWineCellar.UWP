@@ -128,6 +128,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ComboBoxValidator.xaml.cs">
+      <DependentUpon>ComboBoxValidator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextBoxValidator.xaml.cs">
       <DependentUpon>TextBoxValidator.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ComboBoxValidator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TextBoxValidator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
