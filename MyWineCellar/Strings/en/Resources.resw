@@ -123,9 +123,6 @@
   <data name="EntryAcquisitionMeans.Header" xml:space="preserve">
     <value>Acquisition means *</value>
   </data>
-  <data name="EntryAcquisitionMeans.PlaceholderText" xml:space="preserve">
-    <value>Purchase from the producer</value>
-  </data>
   <data name="EntryAppellation.Header" xml:space="preserve">
     <value>Appellation *</value>
   </data>

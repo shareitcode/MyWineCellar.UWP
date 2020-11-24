@@ -61,13 +61,13 @@ namespace MyWineCellar.Controls
 				{
 					this.TextBlock.Visibility = Visibility.Visible;
 					this.TextBox.BorderBrush = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFFF0000");
-					this.IsValidate = true;
+					this.IsValidate = false;
 				}
 				else
 				{
 					this.TextBlock.Visibility = Visibility.Collapsed;
 					this.TextBox.BorderBrush = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
-					this.IsValidate = false;
+					this.IsValidate = true;
 				}
 			}
 		}
