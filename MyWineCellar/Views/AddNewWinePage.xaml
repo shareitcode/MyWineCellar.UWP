@@ -6,10 +6,21 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:converters="using:MyWineCellar.Converters"
 	xmlns:controls="using:MyWineCellar.Controls"
+    xmlns:models="using:MyWineCellar.Models"
 	mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Page.Resources>
+        <DataTemplate x:Key="ValidationTemplate">
+            <ItemsControl ItemsSource="{Binding Path={InputValidation.Errors}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{x:Bind ErrorMessage}" Foreground="Red"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DataTemplate>
+        
 		<converters:DoubleToStringConverter x:Key="DoubleConverter" />
 		<converters:ShortToStringEmptyConverter x:Key="ShortConverter" />
 	</Page.Resources>
@@ -36,6 +47,8 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="2*"/>
 				</Grid.ColumnDefinitions>
+
+                <TextBox InputValidation.VisualKind="InLine" InputValidation.ErrorTemplate="{StaticResource ValidationTemplate}"></TextBox>
 
 				<controls:TextBoxValidator x:Uid="EntryProducer" Grid.Column="1"  Grid.Row="0" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
