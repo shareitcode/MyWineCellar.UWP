@@ -12,7 +12,7 @@ namespace MyWineCellar.DAL.Models
 		public string Parcel { get; set; }
 		public short Vintage { get; set; }
 		public short Quantity { get; set; }
-		public string Color { get; set; }
+		public short Color { get; set; }
 		public double Price { get; set; }
 		public DateTime AcquisitionDate { get; set; }
 		public string AcquisitionMeans { get; set; }

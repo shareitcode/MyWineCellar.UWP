@@ -1,10 +1,8 @@
 ﻿using MyWineCellar.DTO;
 using MyWineCellar.Helpers;
-using MyWineCellar.Models;
 using MyWineCellar.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Xaml.Media;
@@ -15,16 +13,16 @@ namespace MyWineCellar.ViewModels
 	{
 		public WineDto Wine { get; set; } = new WineDto();
 
-		public IEnumerable<WineColor> WineColors { get; } = Enum.GetValues(typeof(WineColor)).Cast<WineColor>();
+		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
 
-		private WineColor _wineColor;
-		public WineColor WineColor
+		private int _wineColor;
+		public int WineColor
 		{
 			get => this._wineColor;
 			set => this.Set(ref this._wineColor, value);
 		}
 
-		public string ErrorMessage => "Le champs ne peut pas être vide";
+		public string ErrorMessage => Constants.ErrorMessageTheFieldCannotBeEmpty;
 
 		private bool _addNewWineButtonIsEnabled;
 		public bool AddNewWineButtonIsEnabled
@@ -230,13 +228,18 @@ namespace MyWineCellar.ViewModels
 			uiErrorMessageVisible(false);
 		}
 
-		private bool FormsValid() => !(this.CountryErrorMessageIsVisible || this.ProducerErrorMessageIsVisible || this.RegionErrorMessageIsVisible
+		private bool FormsValid() => !(this.CountryErrorMessageIsVisible || this.RegionErrorMessageIsVisible
 										|| this.ParcelErrorMessageIsVisible || this.VintageErrorMessageIsVisible || this.QuantityErrorMessageIsVisible);
+
+		public AddNewWineViewModel()
+		{
+		}
 
 		public async Task AddNewWine()
 		{
 			try
 			{
+				WineDto wine = this.Wine;
 				//await WineRepository.Add(this.Wine);
 				NavigationService.GoBack();
 			}

@@ -126,6 +126,9 @@
   <data name="AddNewWine_WineColorWhite" xml:space="preserve">
     <value>White</value>
   </data>
+  <data name="ErrorMessage_TheFieldCannotBeEmpty.Text" xml:space="preserve">
+    <value>The field cannot be empty</value>
+  </data>
   <data name="Main_AddNewWine.Content" xml:space="preserve">
     <value>Add wine</value>
   </data>

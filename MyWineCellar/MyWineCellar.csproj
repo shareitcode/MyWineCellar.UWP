@@ -128,13 +128,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextBoxValidator.xaml.cs">
+      <DependentUpon>TextBoxValidator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BooleanToNavigationViewBackButtonVisibleConverter.cs" />
     <Compile Include="Converters\BooleanToVisibleConverter.cs" />
     <Compile Include="Converters\DoubleToStringConverter.cs" />
     <Compile Include="Converters\ShortToStringEmptyConverter.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\UserInterfaceHelper.cs" />
-    <Compile Include="Models\WineColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Session.cs" />
     <Compile Include="Services\NavigationService.cs" />
@@ -200,6 +203,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\TextBoxValidator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\DictionaryMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
