@@ -1,4 +1,5 @@
 ﻿using MyWineCellar.ViewModels;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace MyWineCellar.Views
@@ -14,6 +15,6 @@ namespace MyWineCellar.Views
 			this.Loading += this.WineListPage_Loading;
 		}
 
-		private async void WineListPage_Loading(Windows.UI.Xaml.FrameworkElement sender, object args) => await this.WineListViewModel.Initialize();
+		private async void WineListPage_Loading(FrameworkElement sender, object args) => await this.WineListViewModel.InitializeAsync();
 	}
 }

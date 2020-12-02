@@ -1,45 +1,30 @@
-﻿using System;
-using MyWineCellar.DTO;
+﻿using MyWineCellar.DTO;
 using MyWineCellar.Helpers;
-using MyWineCellar.Models;
 using MyWineCellar.Repository;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
-using Microsoft.EntityFrameworkCore;
-using MyWineCellar.DAL;
 
 namespace MyWineCellar.ViewModels
 {
 	internal sealed class WineListViewModel : BaseViewModel
 	{
-		public ObservableCollection<Wine> Wines { get; set; }
-
-		public WineListViewModel()
+		private ObservableCollection<WineDto> _wines;
+		public ObservableCollection<WineDto> Wines
 		{
+			get => this._wines;
+			set => this.Set(ref this._wines, value);
 		}
 
-		public async Task Initialize()
+		public async Task InitializeAsync()
 		{
-			try
+			if (Session.Instance.IsExist("Wines"))
 			{
-				IEnumerable<WineDto> wines = await WineRepository.GetAllWines(ApplicationData.Current.LocalFolder.Path + "\\MyWineCellar.db");
+				this.Wines = new ObservableCollection<WineDto>(Session.Instance.Get<ObservableCollection<WineDto>>("Wines"));
 			}
-			catch (Exception e)
+			else
 			{
-				Console.WriteLine(e);
-			}
-			this.Wines = new ObservableCollection<Wine>()
-			{
-					new Wine() {Appellation = "Vin 1", Producer = "Producer 1", Vintage = 2010, Quantity = 6},
-					new Wine() {Appellation = "Vin 2", Producer = "Producer 2", Vintage = 2010, Quantity = 6},
-					new Wine() {Appellation = "Vin 3", Producer = "Producer 3", Vintage = 2010, Quantity = 6}
-			};
-			if (Session.Instance.IsExist("Wine"))
-			{
-				this.Wines.Add(Session.Instance.Get<Wine>("Wine"));
+				this.Wines = new ObservableCollection<WineDto>(await WineRepository.GetAllWines());
+				Session.Instance.Add(nameof(this.Wines), this.Wines);
 			}
 		}
 	}

@@ -4,6 +4,7 @@ using MyWineCellar.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.Sqlite;
 using MyWineCellar.DAL.Models;
@@ -12,19 +13,17 @@ namespace MyWineCellar.Repository
 {
 	public static class WineRepository
 	{
-		public static async Task<IEnumerable<WineDto>> GetAllWines(string path)
+		private static IMapper Mapper => new Mapper(new MapperConfiguration(configure => configure.AddProfile(new AutoMapperProfile())));
+
+		public static async Task<IEnumerable<WineDto>> GetAllWines(string path = null)
 		{
 			await using MyWineCellarDbContext dbContext = new MyWineCellarDbContext();
-			List<Wine> wines = await dbContext.Wines.ToListAsync();
+			return Mapper.Map<IEnumerable<WineDto>>(await dbContext.Wines.ToListAsync());
 
-			using (SqliteConnection sqliteConnection = new SqliteConnection("FileName=" + path))
-			{
-				await sqliteConnection.GetAllAsync<Wine>();
-			}
-
-			return Enumerable.Empty<WineDto>();
-			//using SqliteConnection sqliteConnection = new SqliteConnection("Filename=MyWineCellar.db");
-			//return await sqliteConnection.QueryAsync<WineDto>("SELECT * FROM WINES");
+			//using (SqliteConnection sqliteConnection = new SqliteConnection("FileName=" + path))
+			//{
+			//	return _mapper.Map<IEnumerable<WineDto>>(await sqliteConnection.GetAllAsync<Wine>());
+			//}
 		}
 	}
 }
