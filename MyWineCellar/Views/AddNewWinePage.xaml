@@ -61,7 +61,7 @@
 						           Visibility="{x:Bind AddNewWineViewModel.RegionErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
 					</TextBox.Description>
 				</TextBox>
-				<TextBox x:Name="TextBoxApellation" Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
+				<TextBox x:Name="TextBoxAppellation" Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
 				         BorderBrush="{x:Bind AddNewWineViewModel.AppellationTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}">
 					<TextBox.Description>
@@ -69,7 +69,7 @@
 						           Visibility="{x:Bind AddNewWineViewModel.AppellationErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
 					</TextBox.Description>
 				</TextBox>
-				<TextBox x:Name="TextBoxParcelle" Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
+				<TextBox x:Name="TextBoxParcel" Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
 				         BorderBrush="{x:Bind AddNewWineViewModel.ParcelTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}">
 					<TextBox.Description>
@@ -88,16 +88,30 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<TextBox Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="20000"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, Converter={StaticResource ShortConverter}}"/>
-				<TextBox Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="6"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, Converter={StaticResource ShortConverter}}"/>
-				<ComboBox Grid.Column="2" Header="Couleur *" PlaceholderText="Couleur" HorizontalAlignment="Stretch">
-					<x:String>Rouge</x:String>
+				<TextBox x:Name="TextBoxVintage" Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
+				         BorderBrush="{x:Bind AddNewWineViewModel.VintageTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, Converter={StaticResource ShortConverter}}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.VintageErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Name="TextBoxQuantity" Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
+				         BorderBrush="{x:Bind AddNewWineViewModel.QuantityTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, Converter={StaticResource ShortConverter}}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.QuantityErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
+					</TextBox.Description>
+				</TextBox>
+				<ComboBox Grid.Column="2" Header="Couleur *" PlaceholderText="Couleur" HorizontalAlignment="Stretch"
+				          ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
+				          SelectedItem="{x:Bind AddNewWineViewModel.WineColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+					<!--<x:String>Rouge</x:String>
 					<x:String>Blanc</x:String>
-					<x:String>Rosé</x:String>
+					<x:String>Rosé</x:String>-->
 				</ComboBox>
-				<TextBox Grid.Column="3" Header="Prix" InputScope="CurrencyAmount" PlaceholderText="20"
+				<TextBox Grid.Column="3" Header="Prix" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay, Converter={StaticResource DoubleConverter}}"/>
 			</Grid>
 		</StackPanel>
