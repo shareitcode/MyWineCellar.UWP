@@ -4,7 +4,6 @@ using MyWineCellar.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.UI;
 using Windows.UI.Xaml.Media;
 
 namespace MyWineCellar.ViewModels
@@ -41,14 +40,14 @@ namespace MyWineCellar.ViewModels
 			set => this.Set(ref this._producerErrorMessage, value);
 		}
 
-		private Brush _textBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
-		public Brush TextBoxBordersColor 
+		private Brush _producerTextBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
+		public Brush ProducerTextBoxBordersColor 
 		{
-			get => this._textBoxBordersColor;
-			set => this.Set(ref this._textBoxBordersColor, value);
+			get => this._producerTextBoxBordersColor;
+			set => this.Set(ref this._producerTextBoxBordersColor, value);
 		}
 
-        public ICommand CheckProducerValidityCommand => new RelayCommand(this.CheckProducerValidity);
+		public ICommand CheckProducerValidityCommand => new RelayCommand(this.CheckProducerValidity);
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
 
@@ -61,12 +60,14 @@ namespace MyWineCellar.ViewModels
 			if (string.IsNullOrEmpty(this.Wine.Producer))
 			{
 				this.ProducerErrorMessage = "Le champs ne peut pas être vide";
-				this.TextBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFFF0000");
+				this.ProducerTextBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFFF0000");
+				this.ErrorMessageIsVisible = true;
 			}
             else
 			{
 				this.ProducerErrorMessage = string.Empty;
-				this.TextBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
+				this.ProducerTextBoxBordersColor = UserInterfaceHelper.GetSolidColorBrushFromHexadecimal("#FFA7A7A7");
+				this.ErrorMessageIsVisible = false;
 			}
 		}
 
