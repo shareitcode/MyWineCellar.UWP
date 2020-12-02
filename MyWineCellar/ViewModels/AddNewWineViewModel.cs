@@ -1,8 +1,11 @@
-﻿using MyWineCellar.DTO;
+﻿using System;
+using MyWineCellar.DTO;
 using MyWineCellar.Helpers;
 using MyWineCellar.Services;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using MyWineCellar.Repository;
 
 namespace MyWineCellar.ViewModels
 {
@@ -24,10 +27,25 @@ namespace MyWineCellar.ViewModels
 			set => this.Set(ref this._errorMessageIsVisible, value);
 		}
 
-		public ICommand AddNewWineCommand => new RelayCommand(this.AddNewWine);
-
-		public void AddNewWine()
+		private bool _addNewWineButtonIsEnabled;
+		public bool AddNewWineButtonIsEnabled
 		{
+			get => this._addNewWineButtonIsEnabled;
+			set => this.Set(ref this._addNewWineButtonIsEnabled, value);
+		}
+
+		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
+
+		public async Task AddNewWine()
+		{
+			try
+			{
+				await WineRepository.Add(this.Wine);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 			if (Session.Instance.IsExist("Wines"))
 			{
 				Session.Instance.Get<ObservableCollection<WineDto>>("Wines").Add(this.Wine);

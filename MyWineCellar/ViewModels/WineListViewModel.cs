@@ -23,7 +23,7 @@ namespace MyWineCellar.ViewModels
 			}
 			else
 			{
-				this.Wines = new ObservableCollection<WineDto>(await WineRepository.GetAllWines());
+				this.Wines = new ObservableCollection<WineDto>(await WineRepository.GetAll());
 				Session.Instance.Add(nameof(this.Wines), this.Wines);
 			}
 		}
