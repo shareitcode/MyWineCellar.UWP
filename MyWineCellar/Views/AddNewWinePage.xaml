@@ -37,20 +37,42 @@
 
 				<TextBox x:Name="TextBoxProducer" Grid.Column="1"  Grid.Row="0" Header="Producteur *" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
 					         BorderBrush="{x:Bind AddNewWineViewModel.ProducerTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-					         Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay}" >
+					         Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay}">
 					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ProducerErrorMessage, Mode=OneWay}" Foreground="Red"
-							           Visibility="{x:Bind AddNewWineViewModel.ErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+							           Visibility="{x:Bind AddNewWineViewModel.ProducerErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
 					</TextBox.Description>
 				</TextBox>
 				<TextBox x:Name="TextBoxCountry" Grid.Column="1" Grid.Row="1" Header="Pays *" InputScope="Text" PlaceholderText="France"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay}"/>
+				         BorderBrush="{x:Bind AddNewWineViewModel.CountryTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.CountryErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+					</TextBox.Description>
+				</TextBox>
 				<TextBox x:Name="TextBoxRegion" Grid.Column="1" Grid.Row="2" Header="Région *" InputScope="Text" PlaceholderText="Gironde"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay}"/>
+				         BorderBrush="{x:Bind AddNewWineViewModel.RegionTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
+				         Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.RegionErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+					</TextBox.Description>
+				</TextBox>
 				<TextBox x:Name="TextBoxApellation" Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}"/>
+				         Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.AppellationErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+					</TextBox.Description>
+				</TextBox>
 				<TextBox x:Name="TextBoxParcelle" Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}"/>
+				         Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}">
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
+						           Visibility="{x:Bind AddNewWineViewModel.ParcelErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource ErrorMessageVisible}}"/>
+					</TextBox.Description>
+				</TextBox>
 			</Grid>
 		</StackPanel>
 

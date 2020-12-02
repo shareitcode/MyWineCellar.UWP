@@ -20,6 +20,9 @@ namespace MyWineCellar.Views
 		{
 			this.SetBehaviorsForProducerTextBox();
 			this.SetBehaviorsForCountryTextBox();
+			this.SetBehaviorsForRegionTextBox();
+			this.SetBehaviorsForAppellationTextBox();
+			this.SetBehaviorsForParcelTextBox();
 		}
 
 		private void SetBehaviorsForProducerTextBox() => Interaction.SetBehaviors(this.TextBoxProducer, new BehaviorCollection
@@ -46,10 +49,55 @@ namespace MyWineCellar.Views
 						{
 							new InvokeCommandAction
 							{
-								Command = this.AddNewWineViewModel.CheckProducerValidityCommand
+								Command = this.AddNewWineViewModel.CheckCountryValidityCommand
 							}
 						}
 				}
 			});
+
+		private void SetBehaviorsForRegionTextBox() => Interaction.SetBehaviors(this.TextBoxRegion, new BehaviorCollection
+		{
+				new EventTriggerBehavior
+				{
+						EventName = "LostFocus",
+						Actions =
+						{
+								new InvokeCommandAction
+								{
+										Command = this.AddNewWineViewModel.CheckRegionValidityCommand
+								}
+						}
+				}
+		});
+
+		private void SetBehaviorsForAppellationTextBox() => Interaction.SetBehaviors(this.TextBoxApellation, new BehaviorCollection
+		{
+				new EventTriggerBehavior
+				{
+						EventName = "LostFocus",
+						Actions =
+						{
+								new InvokeCommandAction
+								{
+										Command = this.AddNewWineViewModel.CheckAppellationValidityCommand
+								}
+						}
+				}
+		});
+
+		private void SetBehaviorsForParcelTextBox() => Interaction.SetBehaviors(this.TextBoxParcelle, new BehaviorCollection
+		{
+				new EventTriggerBehavior
+				{
+						EventName = "LostFocus",
+						Actions =
+						{
+								new InvokeCommandAction
+								{
+										Command = this.AddNewWineViewModel.CheckParcelValidityCommand
+								}
+						}
+				}
+		});
 	}
 }
