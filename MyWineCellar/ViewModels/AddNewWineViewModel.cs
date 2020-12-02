@@ -23,79 +23,101 @@ namespace MyWineCellar.ViewModels
 			set => this.Set(ref this._addNewWineButtonIsEnabled, value);
 		}
 
-		private bool _producerErrorMessageIsVisible = true;
-		public bool ProducerErrorMessageIsVisible
+		private bool _producerIsValid;
+		public bool ProducerIsValid
 		{
-			get => this._producerErrorMessageIsVisible;
+			get => this._producerIsValid;
 			set
 			{
-				this.Set(ref this._producerErrorMessageIsVisible, value);
+				this.Set(ref this._producerIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _countryErrorMessageIsVisible = true;
-		public bool CountryErrorMessageIsVisible
+		private bool _countryIsValid;
+		public bool CountryIsValid
 		{
-			get => this._countryErrorMessageIsVisible;
+			get => this._countryIsValid;
 			set
 			{
-				this.Set(ref this._countryErrorMessageIsVisible, value);
+				this.Set(ref this._countryIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _regionErrorMessageIsVisible = true;
-		public bool RegionErrorMessageIsVisible
+		private bool _regionIsValid;
+		public bool RegionIsValid
 		{
-			get => this._regionErrorMessageIsVisible;
+			get => this._regionIsValid;
 			set
 			{
-				this.Set(ref this._regionErrorMessageIsVisible, value);
+				this.Set(ref this._regionIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _appellationErrorMessageIsVisible = true;
-		public bool AppellationErrorMessageIsVisible
+		private bool _appellationIsValid;
+		public bool AppellationIsValid
 		{
-			get => this._appellationErrorMessageIsVisible;
+			get => this._appellationIsValid;
 			set
 			{
-				this.Set(ref this._appellationErrorMessageIsVisible, value);
+				this.Set(ref this._appellationIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _parcelErrorMessageIsVisible = true;
-		public bool ParcelErrorMessageIsVisible
+		private bool _parcelIsValid;
+		public bool ParcelIsValid
 		{
-			get => this._parcelErrorMessageIsVisible;
+			get => this._parcelIsValid;
 			set
 			{
-				this.Set(ref this._parcelErrorMessageIsVisible, value);
+				this.Set(ref this._parcelIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _vintageErrorMessageIsVisible = true;
-		public bool VintageErrorMessageIsVisible
+		private bool _vintageIsValid;
+		public bool VintageIsValid
 		{
-			get => this._vintageErrorMessageIsVisible;
+			get => this._vintageIsValid;
 			set
 			{
-				this.Set(ref this._vintageErrorMessageIsVisible, value);
+				this.Set(ref this._vintageIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
 
-		private bool _quantityErrorMessageIsVisible = true;
-		public bool QuantityErrorMessageIsVisible
+		private bool _quantityIsValid;
+		public bool QuantityIsValid
 		{
-			get => this._quantityErrorMessageIsVisible;
+			get => this._quantityIsValid;
 			set
 			{
-				this.Set(ref this._quantityErrorMessageIsVisible, value);
+				this.Set(ref this._quantityIsValid, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+			}
+		}
+
+		private bool _colorIsValid;
+		public bool ColorIsValid
+		{
+			get => this._colorIsValid;
+			set
+			{
+				this.Set(ref this._colorIsValid, value);
+				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
+			}
+		}
+
+		private bool _acquisitionMeansIsValid;
+		public bool AcquisitionMeansIsValid
+		{
+			get => this._acquisitionMeansIsValid;
+			set
+			{
+				this.Set(ref this._acquisitionMeansIsValid, value);
 				this.AddNewWineButtonIsEnabled = this.AllEntriesAreValid();
 			}
 		}
@@ -116,8 +138,11 @@ namespace MyWineCellar.ViewModels
 			}
 		}
 
-        private bool AllEntriesAreValid() => !this.ProducerErrorMessageIsVisible && !this.CountryErrorMessageIsVisible && !this.RegionErrorMessageIsVisible
-											 && !this.AppellationErrorMessageIsVisible && !this.ParcelErrorMessageIsVisible && !this.VintageErrorMessageIsVisible
-											 && !this.QuantityErrorMessageIsVisible;
-    }
+		private bool AllEntriesAreValid()
+		{
+			return this.ProducerIsValid && this.CountryIsValid && this.RegionIsValid
+					&& this.AppellationIsValid && this.ParcelIsValid && this.VintageIsValid
+					&& this.QuantityIsValid && this.ColorIsValid && this.AcquisitionMeansIsValid;
+		}
+	}
 }
