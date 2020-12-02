@@ -69,9 +69,9 @@
 				<controls:TextBoxValidator x:Uid="EntryQuantity" Grid.Column="1" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ShortConverter}}"
 				                           IsValidate="{x:Bind AddNewWineViewModel.QuantityErrorMessageIsVisible, Mode=TwoWay}"/>
-				<ComboBox x:Uid="EntryColor" Grid.Column="2" PlaceholderText="Couleur" HorizontalAlignment="Stretch"
-				          ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
-				          SelectedIndex="{x:Bind AddNewWineViewModel.Wine.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <controls:ComboBoxValidator x:Uid="EntryColor" Grid.Column="2" HorizontalAlignment="Stretch"
+                                            ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
+                                            SelectedIndex="{x:Bind AddNewWineViewModel.Wine.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 				<TextBox x:Uid="EntryPrice" Grid.Column="3" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay, Converter={StaticResource DoubleConverter}}"/>
 			</Grid>

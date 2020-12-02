@@ -12,7 +12,7 @@ namespace MyWineCellar.ViewModels
 	{
 		public AddWineModel Wine { get; set; } = new AddWineModel();
 
-		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
+		public IEnumerable<String> WineColors { get; } = Constants.WineColors;
 
 		public IEnumerable<string> AcquisitionMeans { get; } = Constants.AcquisitionMeans;
 
