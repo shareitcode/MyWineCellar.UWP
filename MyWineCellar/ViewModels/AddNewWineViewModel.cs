@@ -2,7 +2,12 @@
 using MyWineCellar.Models;
 using MyWineCellar.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -112,7 +117,7 @@ namespace MyWineCellar.ViewModels
 		}
 
 		private bool _acquisitionMeansIsValid;
-		public bool AcquisitionMeansIsValid
+        public bool AcquisitionMeansIsValid
 		{
 			get => this._acquisitionMeansIsValid;
 			set
@@ -123,6 +128,7 @@ namespace MyWineCellar.ViewModels
 		}
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
+
 
 		public async Task AddNewWine()
 		{
@@ -144,5 +150,5 @@ namespace MyWineCellar.ViewModels
 					&& this.AppellationIsValid && this.ParcelIsValid && this.VintageIsValid
 					&& this.QuantityIsValid && this.ColorIsValid && this.AcquisitionMeansIsValid;
 		}
-	}
+    }
 }
