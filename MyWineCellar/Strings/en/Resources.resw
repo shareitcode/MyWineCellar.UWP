@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddNewWine_EntryHeaderAcquisitionDate.Header" xml:space="preserve">
+    <value>Acquisition date *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderAppellation.Header" xml:space="preserve">
+    <value>Appellation *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderColor.Header" xml:space="preserve">
+    <value>Color *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderCountry.Header" xml:space="preserve">
+    <value>Country *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderParcel.Header" xml:space="preserve">
+    <value>Parcel *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderPrice.Header" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderProducer.Header" xml:space="preserve">
+    <value>Producer *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderQuantity.Header" xml:space="preserve">
+    <value>Quantity *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderRegion.Header" xml:space="preserve">
+    <value>Region *</value>
+  </data>
+  <data name="AddNewWine_EntryHeaderVintage.Header" xml:space="preserve">
+    <value>Vintage *</value>
+  </data>
   <data name="AddNewWine_WineColorRed" xml:space="preserve">
     <value>Red</value>
   </data>
