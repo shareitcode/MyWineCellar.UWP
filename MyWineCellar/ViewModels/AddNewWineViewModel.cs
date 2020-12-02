@@ -1,11 +1,9 @@
-﻿using System;
-using MyWineCellar.DTO;
+﻿using MyWineCellar.DTO;
 using MyWineCellar.Helpers;
 using MyWineCellar.Services;
-using System.Collections.ObjectModel;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using MyWineCellar.Repository;
 
 namespace MyWineCellar.ViewModels
 {
@@ -27,35 +25,43 @@ namespace MyWineCellar.ViewModels
 			set => this.Set(ref this._errorMessageIsVisible, value);
 		}
 
-		private bool _addNewWineButtonIsEnabled;
+		private bool _addNewWineButtonIsEnabled = true;
 		public bool AddNewWineButtonIsEnabled
 		{
 			get => this._addNewWineButtonIsEnabled;
 			set => this.Set(ref this._addNewWineButtonIsEnabled, value);
 		}
 
+		private string _producerErrorMessage;
+		public string ProducerErrorMessage
+		{
+			get => this._producerErrorMessage;
+			set => this.Set(ref this._producerErrorMessage, value);
+		}
+		
+		public ICommand CheckProducerValidityCommand => new RelayCommand(this.CheckProducerValidity);
+
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
+
+		public AddNewWineViewModel()
+		{
+		}
+
+		public void CheckProducerValidity()
+		{
+			this.ProducerErrorMessage = string.IsNullOrEmpty(this.Wine.Producer) ? "Le champs ne peut pas être vide" : string.Empty;
+		}
 
 		public async Task AddNewWine()
 		{
 			try
 			{
-				await WineRepository.Add(this.Wine);
+				//await WineRepository.Add(this.Wine);
+				NavigationService.GoBack();
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
-			}
-			if (Session.Instance.IsExist("Wines"))
-			{
-				Session.Instance.Get<ObservableCollection<WineDto>>("Wines").Add(this.Wine);
-				this.Wine = null;
-				NavigationService.GoBack();
-			}
-			else
-			{
-				this.ErrorMessage = "Couldn't added wine 🙁";
-				this.ErrorMessageIsVisible = true;
 			}
 		}
 	}
