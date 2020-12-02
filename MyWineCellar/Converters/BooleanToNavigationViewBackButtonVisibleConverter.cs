@@ -8,7 +8,7 @@ namespace MyWineCellar.Converters
 	{
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			if (value is bool valueAsBool && valueAsBool)
+			if (value is bool valueIsBool && valueIsBool)
 				return NavigationViewBackButtonVisible.Visible;
 
 			return NavigationViewBackButtonVisible.Collapsed;
