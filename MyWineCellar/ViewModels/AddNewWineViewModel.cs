@@ -1,31 +1,29 @@
-﻿using MyWineCellar.Helpers;
+﻿using FluentValidation.Results;
+using MyWineCellar.Helpers;
 using MyWineCellar.Models;
 using MyWineCellar.Services;
 using MyWineCellar.Validators;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using FluentValidation.Results;
 
 namespace MyWineCellar.ViewModels
 {
-	internal sealed class AddNewWineViewModel : BaseViewModel
+    internal sealed class AddNewWineViewModel : BaseViewModel
 	{
-		public AddWineModel Wine { get; set; } = new AddWineModel();
+		private AddWineModel _wine = new AddWineModel();
+		public AddWineModel Wine
+		{
+			get => this._wine;
+			set => this.Set(ref _wine, value);
+		}
 
 		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
 
 		public IEnumerable<string> AcquisitionMeans { get; } = Constants.AcquisitionMeans;
-
-		private string _errorMessage;
-		public string ErrorMessage
-		{
-			get => this._errorMessage;
-			set => this.Set(ref this._errorMessage, value);
-		}
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
 
@@ -33,25 +31,37 @@ namespace MyWineCellar.ViewModels
 		{
 			try
 			{
-				AddWineModel wine = this.Wine;
+				AddWineModel wine = this.Wine.Clone();
 				ValidationResult validationResult = await AddNewWineValidator.GetValidator().ValidateAsync(wine);
 				if (validationResult.IsValid)
 					NavigationService.GoBack();
 				else
-				{
-					StringBuilder stringBuilder = new StringBuilder();
-					foreach (ValidationFailure validationFailure in validationResult.Errors)
-					{
-						stringBuilder.AppendLine($"- {validationFailure.ErrorMessage}");
-					}
-					this.ErrorMessage = stringBuilder.ToString();
-				}
-				//await WineRepository.Add(this.Wine);
-			}
+                    SetErrorMessages(wine, validationResult);
+
+                //await WineRepository.Add(this.Wine);
+            }
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
 			}
 		}
-	}
+
+        private void SetErrorMessages(AddWineModel wine, ValidationResult validationResult)
+        {
+            wine.ClearErrorMessages();
+            foreach (ValidationFailure validationFailure in validationResult.Errors)
+            {
+                PropertyInfo winePropertyErrorMessage = GetWinePropertyInformationsByValidationPropertyName(validationFailure);
+                if (winePropertyErrorMessage != null)
+                    winePropertyErrorMessage.SetValue(wine, validationFailure.ErrorMessage);
+            }
+            this.Wine = wine;
+        }
+
+        private PropertyInfo GetWinePropertyInformationsByValidationPropertyName(ValidationFailure validationFailure)
+        {
+            return this.Wine.GetType().GetProperties().FirstOrDefault(wineProperty => wineProperty.Name.EndsWith(Constants.ErrorMessage)
+					&& wineProperty.Name.StartsWith(validationFailure.PropertyName));
+        }
+    }
 }
