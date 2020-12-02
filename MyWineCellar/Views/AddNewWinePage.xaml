@@ -10,8 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Page.Resources>
-		<converters:BooleanToVisibleConverter x:Key="VisibilityConverter" />
-		<converters:ShortToStringEmptyConverter x:Key="ShortConverter" />
 		<converters:DoubleToStringConverter x:Key="DoubleConverter" />
 	</Page.Resources>
 
@@ -38,49 +36,21 @@
 					<ColumnDefinition Width="2*"/>
 				</Grid.ColumnDefinitions>
 
-				<!--<TextBox x:Name="TextBoxProducer" Grid.Column="1"  Grid.Row="0" Header="Producteur *" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
-					         BorderBrush="{x:Bind AddNewWineViewModel.ProducerTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-					         Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-							       Visibility="{x:Bind AddNewWineViewModel.ProducerErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>-->
-				<controls:TextBoxValidator x:Name="TextBoxProducer" Grid.Column="1"  Grid.Row="0" Header="Producteur *" PlaceholderText="Château Moulin de Laborde"
+				<controls:TextBoxValidator Grid.Column="1"  Grid.Row="0" Header="Producteur *" InputScope="Text" PlaceholderText="Château Moulin de Laborde"
 				                           Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-				                           IsValidate="{x:Bind AddNewWineViewModel.ProducerErrorMessageIsVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-				<TextBox x:Name="TextBoxCountry" Grid.Column="1" Grid.Row="1" Header="Pays *" InputScope="Text" PlaceholderText="France"
-				         BorderBrush="{x:Bind AddNewWineViewModel.CountryTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.CountryErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
-				<TextBox x:Name="TextBoxRegion" Grid.Column="1" Grid.Row="2" Header="Région *" InputScope="Text" PlaceholderText="Gironde"
-				         BorderBrush="{x:Bind AddNewWineViewModel.RegionTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.RegionErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
-				<TextBox x:Name="TextBoxAppellation" Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
-				         BorderBrush="{x:Bind AddNewWineViewModel.AppellationTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.AppellationErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
-				<TextBox x:Name="TextBoxParcel" Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
-				         BorderBrush="{x:Bind AddNewWineViewModel.ParcelTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.ParcelErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
+				                           IsValidate="{x:Bind AddNewWineViewModel.ProducerErrorMessageIsVisible, Mode=TwoWay}"/>
+				<controls:TextBoxValidator Grid.Column="1" Grid.Row="1" Header="Pays *" InputScope="Text" PlaceholderText="France"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.CountryErrorMessageIsVisible, Mode=OneWay}"/>
+				<controls:TextBoxValidator Grid.Column="1" Grid.Row="2" Header="Région *" InputScope="Text" PlaceholderText="Gironde"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.RegionErrorMessageIsVisible, Mode=OneWay}"/>
+				<controls:TextBoxValidator Grid.Column="1" Grid.Row="3" Header="Appellation *" InputScope="Text" PlaceholderText="Haut-Médoc"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.AppellationErrorMessageIsVisible, Mode=OneWay}"/>
+				<controls:TextBoxValidator Grid.Column="1" Grid.Row="4" Header="Parcelle *" InputScope="Text" PlaceholderText="Cru Bourgeois"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.ParcelErrorMessageIsVisible, Mode=OneWay}"/>
 			</Grid>
 		</StackPanel>
 
@@ -92,22 +62,12 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<TextBox x:Name="TextBoxVintage" Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
-				         BorderBrush="{x:Bind AddNewWineViewModel.VintageTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, Converter={StaticResource ShortConverter}}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.VintageErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
-				<TextBox x:Name="TextBoxQuantity" Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
-				         BorderBrush="{x:Bind AddNewWineViewModel.QuantityTextBoxBordersColor, Mode=OneWay}" BorderThickness="1"
-				         Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, Converter={StaticResource ShortConverter}}">
-					<TextBox.Description>
-						<TextBlock Text="{x:Bind AddNewWineViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red"
-						           Visibility="{x:Bind AddNewWineViewModel.QuantityErrorMessageIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-					</TextBox.Description>
-				</TextBox>
+				<controls:TextBoxValidator Grid.Column="0" Header="Millésime *" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.VintageErrorMessageIsVisible, Mode=OneWay}"/>
+				<controls:TextBoxValidator Grid.Column="1" Header="Quantité *" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
+				                           Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				                           IsValidate="{x:Bind AddNewWineViewModel.QuantityErrorMessageIsVisible, Mode=OneWay}"/>
 				<ComboBox Grid.Column="2" Header="Couleur *" PlaceholderText="Couleur" HorizontalAlignment="Stretch"
 				          ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
 				          SelectedIndex="{x:Bind AddNewWineViewModel.WineColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

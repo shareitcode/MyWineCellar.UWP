@@ -1,9 +1,6 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using MyWineCellar.Helpers;
+﻿using MyWineCellar.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 
 namespace MyWineCellar.Controls
 {
@@ -16,7 +13,7 @@ namespace MyWineCellar.Controls
 		}
 
 		public static readonly DependencyProperty HeaderProperty =
-			DependencyProperty.Register("Header", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(0));
+			DependencyProperty.Register("Header", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(default(string)));
 
 		public string PlaceholderText
 		{
@@ -25,7 +22,7 @@ namespace MyWineCellar.Controls
 		}
 
 		public static readonly DependencyProperty PlaceholderTextTextProperty =
-			DependencyProperty.Register("PlaceholderTextText", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(0));
+			DependencyProperty.Register("PlaceholderTextText", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(default(string)));
 
 		public string Text
 		{
@@ -33,24 +30,17 @@ namespace MyWineCellar.Controls
 			set => this.SetValue(TextProperty, value);
 		}
 
-		public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string),
-																					typeof(TextBoxValidator), new PropertyMetadata(default(string),
-																							TextPropertyOnValueChanged));
+		public static readonly DependencyProperty TextProperty =
+				DependencyProperty.Register("Text", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(default(string)));
 
-		private static void TextPropertyOnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		public string InputScope
 		{
-			
-		}
-
-		public InputScope InputScope
-		{
-			get => (InputScope)this.GetValue(InputScopeProperty);
+			get => (string)this.GetValue(InputScopeProperty);
 			set => this.SetValue(InputScopeProperty, value);
 		}
 
-		// Using a DependencyProperty as the backing store for InputScope.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty InputScopeProperty =
-			DependencyProperty.Register("InputScope", typeof(InputScope), typeof(TextBoxValidator), new PropertyMetadata(0));
+			DependencyProperty.Register("InputScope", typeof(string), typeof(TextBoxValidator), new PropertyMetadata(default(string)));
 
 		public bool IsValidate
 		{
@@ -58,8 +48,8 @@ namespace MyWineCellar.Controls
 			set => this.SetValue(IsValidateProperty, value);
 		}
 
-		public static readonly DependencyProperty IsValidateProperty = DependencyProperty.Register("IsValidate",
-																						typeof(bool), typeof(TextBoxValidator), new PropertyMetadata(0));
+		public static readonly DependencyProperty IsValidateProperty =
+				DependencyProperty.Register("IsValidate", typeof(bool), typeof(TextBoxValidator), new PropertyMetadata(default(bool)));
 
 		public TextBoxValidator() => this.InitializeComponent();
 
