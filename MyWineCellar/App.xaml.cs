@@ -1,4 +1,6 @@
-﻿using MyWineCellar.Views;
+﻿using Microsoft.EntityFrameworkCore;
+using MyWineCellar.DAL;
+using MyWineCellar.Views;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
