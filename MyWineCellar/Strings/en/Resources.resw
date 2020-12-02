@@ -117,44 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNewWine_EntryHeaderAcquisitionDate.Header" xml:space="preserve">
+  <data name="EntryAcquisitionDate.Header" xml:space="preserve">
     <value>Acquisition date *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderAppellation.Header" xml:space="preserve">
+  <data name="EntryAcquisitionMeans.Header" xml:space="preserve">
+    <value>Acquisition means *</value>
+  </data>
+  <data name="EntryAcquisitionMeans.PlaceholderText" xml:space="preserve">
+    <value>Purchase from the producer</value>
+  </data>
+  <data name="EntryAppellation.Header" xml:space="preserve">
     <value>Appellation *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderColor.Header" xml:space="preserve">
+  <data name="EntryColor.Header" xml:space="preserve">
     <value>Color *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderCountry.Header" xml:space="preserve">
+  <data name="EntryCountry.Header" xml:space="preserve">
     <value>Country *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderParcel.Header" xml:space="preserve">
+  <data name="EntryParcel.Header" xml:space="preserve">
     <value>Parcel *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderPrice.Header" xml:space="preserve">
+  <data name="EntryPrice.Header" xml:space="preserve">
     <value>Price</value>
   </data>
-  <data name="AddNewWine_EntryHeaderProducer.Header" xml:space="preserve">
+  <data name="EntryProducer.Header" xml:space="preserve">
     <value>Producer *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderQuantity.Header" xml:space="preserve">
+  <data name="EntryQuantity.Header" xml:space="preserve">
     <value>Quantity *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderRegion.Header" xml:space="preserve">
+  <data name="EntryRegion.Header" xml:space="preserve">
     <value>Region *</value>
   </data>
-  <data name="AddNewWine_EntryHeaderVintage.Header" xml:space="preserve">
+  <data name="EntryVintage.Header" xml:space="preserve">
     <value>Vintage *</value>
-  </data>
-  <data name="AddNewWine_WineColorRed" xml:space="preserve">
-    <value>Red</value>
-  </data>
-  <data name="AddNewWine_WineColorRose" xml:space="preserve">
-    <value>Rosé</value>
-  </data>
-  <data name="AddNewWine_WineColorWhite" xml:space="preserve">
-    <value>White</value>
   </data>
   <data name="ErrorMessage_TheFieldCannotBeEmpty.Text" xml:space="preserve">
     <value>The field cannot be empty</value>
@@ -164,5 +161,38 @@
   </data>
   <data name="Main_WineList.Content" xml:space="preserve">
     <value>Wine list</value>
+  </data>
+  <data name="WineAcquisitionMeans" xml:space="preserve">
+    <value>Select an acquisition means</value>
+  </data>
+  <data name="WineAcquisitionMeansGift" xml:space="preserve">
+    <value>Gift</value>
+  </data>
+  <data name="WineAcquisitionMeansInternet" xml:space="preserve">
+    <value>Buying on the Internet</value>
+  </data>
+  <data name="WineAcquisitionMeansProducer" xml:space="preserve">
+    <value>Purchase from the producer</value>
+  </data>
+  <data name="WineAcquisitionMeansShop" xml:space="preserve">
+    <value>Buying from a wine shop</value>
+  </data>
+  <data name="WineAcquisitionMeansSupermarkets" xml:space="preserve">
+    <value>Buying in supermarkets</value>
+  </data>
+  <data name="WineAcquisitionMeansTradeFair" xml:space="preserve">
+    <value>Buying at a trade fair</value>
+  </data>
+  <data name="WineColor" xml:space="preserve">
+    <value>Select a wine color</value>
+  </data>
+  <data name="WineColorRed" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="WineColorRose" xml:space="preserve">
+    <value>Rosé</value>
+  </data>
+  <data name="WineColorWhite" xml:space="preserve">
+    <value>White</value>
   </data>
 </root>

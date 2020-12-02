@@ -2,15 +2,25 @@
 
 namespace MyWineCellar.Helpers
 {
-	internal sealed class Constants
+	internal static class Constants
 	{
 		internal static string[] WineColors { get; } =
 		{
-				ResourceLoader.GetForViewIndependentUse().GetString("AddNewWine_WineColorRed"),
-				ResourceLoader.GetForViewIndependentUse().GetString("AddNewWine_WineColorWhite"),
-				ResourceLoader.GetForViewIndependentUse().GetString("AddNewWine_WineColorRose")
+				ResourceLoader.GetForViewIndependentUse().GetString("WineColor"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineColorRed"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineColorWhite"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineColorRose")
 		};
 
-		internal static string ErrorMessageTheFieldCannotBeEmpty { get; } = ResourceLoader.GetForViewIndependentUse().GetString("ErrorMessage_TheFieldCannotBeEmpty.Text");
+		internal static string[] AcquisitionMeans { get; } =
+		{
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeans"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansProducer"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansShop"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansSupermarkets"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansInternet"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansTradeFair"),
+				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansGift")
+		};
 	}
 }

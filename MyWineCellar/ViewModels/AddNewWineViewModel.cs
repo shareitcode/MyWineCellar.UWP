@@ -14,12 +14,7 @@ namespace MyWineCellar.ViewModels
 
 		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
 
-		private int _wineColor;
-		public int WineColor
-		{
-			get => this._wineColor;
-			set => this.Set(ref this._wineColor, value);
-		}
+		public IEnumerable<string> AcquisitionMeans { get; } = Constants.AcquisitionMeans;
 
 		private bool _addNewWineButtonIsEnabled;
 		public bool AddNewWineButtonIsEnabled
