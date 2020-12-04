@@ -132,6 +132,7 @@
     <Compile Include="Converters\BooleanToVisibleConverter.cs" />
     <Compile Include="Converters\DoubleToStringConverter.cs" />
     <Compile Include="Converters\ShortToStringEmptyConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\UserInterfaceHelper.cs" />

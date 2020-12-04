@@ -22,5 +22,7 @@ namespace MyWineCellar.Helpers
 				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansTradeFair"),
 				ResourceLoader.GetForViewIndependentUse().GetString("WineAcquisitionMeansGift")
 		};
+
+		internal static string ErrorMessage { get; } = "ErrorMessage";
 	}
 }
