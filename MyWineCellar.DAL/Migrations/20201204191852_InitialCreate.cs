@@ -23,7 +23,8 @@ namespace MyWineCellar.DAL.Migrations
                     Color = table.Column<short>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     AcquisitionDate = table.Column<DateTime>(nullable: false),
-                    AcquisitionMeans = table.Column<string>(nullable: false)
+                    AcquisitionMeans = table.Column<string>(nullable: false),
+                    Image = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {

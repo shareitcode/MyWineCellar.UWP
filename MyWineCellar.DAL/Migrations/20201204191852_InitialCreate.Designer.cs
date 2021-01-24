@@ -9,7 +9,7 @@ using MyWineCellar.DAL;
 namespace MyWineCellar.DAL.Migrations
 {
     [DbContext(typeof(MyWineCellarDbContext))]
-    [Migration("20201109184155_InitialCreate")]
+    [Migration("20201204191852_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace MyWineCellar.DAL.Migrations
 
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Parcel")
                         .IsRequired()

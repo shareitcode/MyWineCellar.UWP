@@ -1,8 +1,9 @@
 ﻿using System;
+using Windows.UI.Xaml.Media.Imaging;
 
-namespace MyWineCellar.DTO
+namespace MyWineCellar.Models
 {
-	public sealed class WineDto
+	internal sealed class WineListModel
 	{
 		public long Id { get; set; }
 		public string Producer { get; set; }
@@ -16,6 +17,6 @@ namespace MyWineCellar.DTO
 		public double Price { get; set; }
 		public DateTime AcquisitionDate { get; set; }
 		public string AcquisitionMeans { get; set; }
-		public byte[] Image { get; set; }
+		public BitmapImage Image { get; set; }
 	}
 }

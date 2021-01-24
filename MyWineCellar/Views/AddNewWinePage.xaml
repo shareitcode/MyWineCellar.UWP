@@ -4,131 +4,134 @@
       xmlns:converters="using:MyWineCellar.Converters"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <converters:DoubleToStringConverter x:Key="DoubleConverter" />
-        <converters:ShortToStringEmptyConverter x:Key="ShortConverter" />
-        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
-    </Page.Resources>
+	<Page.Resources>
+		<converters:DoubleToStringConverter x:Key="DoubleConverter" />
+		<converters:ShortToStringEmptyConverter x:Key="ShortConverter" />
+		<converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+	</Page.Resources>
 
-    <Grid Padding="8" RowSpacing="8">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+	<Grid Padding="8" RowSpacing="8">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-            <Grid RowSpacing="8">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" Orientation="Vertical">
+			<Grid RowSpacing="8" ColumnSpacing="8">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="2*"/>
+				</Grid.ColumnDefinitions>
 
-                <TextBox x:Uid="EntryProducer" Grid.Column="1"  Grid.Row="0" InputScope="Text" PlaceholderText="Château Moulin de Laborde" VerticalAlignment="Top"
+				<Image x:Name="WineImage" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" AllowDrop="True" Drop="WineImage_OnDrop" DragOver="WineImage_OnDragOver"
+				       HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Source="/Assets/camera.png" Height="200" Width="200"/>
+
+				<TextBox x:Uid="EntryProducer" Grid.Column="1"  Grid.Row="0" InputScope="Text" PlaceholderText="Château Moulin de Laborde" VerticalAlignment="Top"
                          Text="{x:Bind AddNewWineViewModel.Wine.Producer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ProducerErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ProducerErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.ProducerErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <TextBox x:Uid="EntryCountry" Grid.Column="1" Grid.Row="1" InputScope="Text" PlaceholderText="France" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Uid="EntryCountry" Grid.Column="1" Grid.Row="1" InputScope="Text" PlaceholderText="France" VerticalAlignment="Top"
                          Text="{x:Bind AddNewWineViewModel.Wine.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.CountryErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.CountryErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.CountryErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <TextBox x:Uid="EntryRegion" Grid.Column="1" Grid.Row="2" InputScope="Text" PlaceholderText="Gironde" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Uid="EntryRegion" Grid.Column="1" Grid.Row="2" InputScope="Text" PlaceholderText="Gironde" VerticalAlignment="Top"
                          Text="{x:Bind AddNewWineViewModel.Wine.Region, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.RegionErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.RegionErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.RegionErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <TextBox x:Uid="EntryAppellation" Grid.Column="1" Grid.Row="3" InputScope="Text" PlaceholderText="Haut-Médoc" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Uid="EntryAppellation" Grid.Column="1" Grid.Row="3" InputScope="Text" PlaceholderText="Haut-Médoc" VerticalAlignment="Top"
                          Text="{x:Bind AddNewWineViewModel.Wine.Appellation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.AppellationErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.AppellationErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.AppellationErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <TextBox x:Uid="EntryParcel" Grid.Column="1" Grid.Row="4" InputScope="Text" PlaceholderText="Cru Bourgeois" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Uid="EntryParcel" Grid.Column="1" Grid.Row="4" InputScope="Text" PlaceholderText="Cru Bourgeois" VerticalAlignment="Top"
                          Text="{x:Bind AddNewWineViewModel.Wine.Parcel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ParcelErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ParcelErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.ParcelErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-            </Grid>
-        </StackPanel>
+					</TextBox.Description>
+				</TextBox>
+			</Grid>
+		</StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Grid ColumnSpacing="8">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBox x:Uid="EntryVintage" Grid.Column="0" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
+		<StackPanel Grid.Row="1" Orientation="Vertical">
+			<Grid ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBox x:Uid="EntryVintage" Grid.Column="0" InputScope="Number" PlaceholderText="20000" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Vintage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ShortConverter}}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.VintageErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.VintageErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.VintageErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <TextBox x:Uid="EntryQuantity" Grid.Column="1" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<TextBox x:Uid="EntryQuantity" Grid.Column="1" InputScope="Number" PlaceholderText="6" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ShortConverter}}">
-                    <TextBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.QuantityErrorMessage, Mode=OneWay}" Foreground="Red"
+					<TextBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.QuantityErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.QuantityErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </TextBox.Description>
-                </TextBox>
-                <ComboBox x:Uid="EntryColor" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+					</TextBox.Description>
+				</TextBox>
+				<ComboBox x:Uid="EntryColor" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"
                           ItemsSource="{x:Bind AddNewWineViewModel.WineColors, Mode=OneWay}"
                           SelectedIndex="{x:Bind AddNewWineViewModel.Wine.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ComboBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ColorErrorMessage, Mode=OneWay}" Foreground="Red"
+					<ComboBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.ColorErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.ColorErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </ComboBox.Description>
-                </ComboBox>
-                <TextBox x:Uid="EntryPrice" Grid.Column="3" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
+					</ComboBox.Description>
+				</ComboBox>
+				<TextBox x:Uid="EntryPrice" Grid.Column="3" InputScope="CurrencyAmount" PlaceholderText="20" VerticalAlignment="Top"
 				         Text="{x:Bind AddNewWineViewModel.Wine.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoubleConverter}}"/>
-            </Grid>
-        </StackPanel>
+			</Grid>
+		</StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Vertical">
-            <Grid ColumnSpacing="8">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <CalendarDatePicker x:Uid="EntryAcquisitionDate" Grid.Column="0" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+		<StackPanel Grid.Row="2" Orientation="Vertical">
+			<Grid ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<CalendarDatePicker x:Uid="EntryAcquisitionDate" Grid.Column="0" PlaceholderText="JJ/MM/AAAA" HorizontalAlignment="Stretch" VerticalAlignment="Top"
 				                    Date="{x:Bind AddNewWineViewModel.Wine.AcquisitionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <ComboBox x:Uid="EntryAcquisitionMeans" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+				<ComboBox x:Uid="EntryAcquisitionMeans" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"
 				          ItemsSource="{x:Bind AddNewWineViewModel.AcquisitionMeans, Mode=OneWay}"
 				          SelectedIndex="{x:Bind AddNewWineViewModel.Wine.AcquisitionMeans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ComboBox.Description>
-                        <TextBlock Text="{x:Bind AddNewWineViewModel.Wine.AcquisitionMeansErrorMessage, Mode=OneWay}" Foreground="Red"
+					<ComboBox.Description>
+						<TextBlock Text="{x:Bind AddNewWineViewModel.Wine.AcquisitionMeansErrorMessage, Mode=OneWay}" Foreground="Red"
                                    Visibility="{x:Bind AddNewWineViewModel.Wine.AcquisitionMeansErrorMessage, Mode=OneWay, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </ComboBox.Description>
-                </ComboBox>
-            </Grid>
-        </StackPanel>
+					</ComboBox.Description>
+				</ComboBox>
+			</Grid>
+		</StackPanel>
 
-        <Button Grid.Row="3"
+		<Button Grid.Row="3"
 		        Content="Ajouter"
 		        HorizontalAlignment="Stretch"
 		        VerticalAlignment="Bottom"
 		        Command="{x:Bind AddNewWineViewModel.AddNewWineCommand, Mode=OneWay}"/>
-    </Grid>
+	</Grid>
 </Page>

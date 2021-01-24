@@ -1,9 +1,9 @@
-﻿using MyWineCellar.Helpers;
-using System;
+﻿using System;
+using MyWineCellar.Validators;
 
 namespace MyWineCellar.Models
 {
-	internal sealed class AddWineModel
+	internal sealed class AddWineModel : ErrorModelBase
 	{
 		public long Id { get; set; }
 		public string Producer { get; set; }
@@ -26,16 +26,9 @@ namespace MyWineCellar.Models
 		public DateTimeOffset AcquisitionDate { get; set; } = DateTimeOffset.Now;
 		public short AcquisitionMeans { get; set; }
 		public string AcquisitionMeansErrorMessage { get; set; }
+		public byte[] Image { get; set; }
+		public string ImageNameWithExtension { get; set; }
 
-        public AddWineModel Clone() => this.MemberwiseClone() as AddWineModel;
-
-        public void ClearErrorMessages()
-        {
-			foreach(var property in this.GetType().GetProperties())
-            {
-				if (property.Name.EndsWith(Constants.ErrorMessage))
-					property.SetValue(this, string.Empty);
-            }
-        }
+		public AddWineModel Clone() => this.MemberwiseClone() as AddWineModel;
 	}
 }

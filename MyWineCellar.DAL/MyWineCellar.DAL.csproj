@@ -152,9 +152,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20201109184155_InitialCreate.cs" />
-    <Compile Include="Migrations\20201109184155_InitialCreate.designer.cs">
-      <DependentUpon>20201109184155_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20201204191852_InitialCreate.cs" />
+    <Compile Include="Migrations\20201204191852_InitialCreate.designer.cs">
+      <DependentUpon>20201204191852_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MyWineCellarDbContextModelSnapshot.cs" />
     <Compile Include="Models\Wine.cs" />

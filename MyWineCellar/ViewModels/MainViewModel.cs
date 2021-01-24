@@ -39,11 +39,10 @@ namespace MyWineCellar.ViewModels
 		}
 
 		private ICommand _loadedCommand;
-		public ICommand LoadedCommand => this._loadedCommand ?? (this._loadedCommand = new RelayCommand(this.OnLoaded));
+		public ICommand LoadedCommand => this._loadedCommand ??= new RelayCommand(this.OnLoaded);
 
 		private ICommand _itemInvokedCommand;
-		public ICommand ItemInvokedCommand => this._itemInvokedCommand
-											  ?? (this._itemInvokedCommand = new RelayCommand<WinUI.NavigationViewItemInvokedEventArgs>(this.OnItemInvoked));
+		public ICommand ItemInvokedCommand => this._itemInvokedCommand ??= new RelayCommand<WinUI.NavigationViewItemInvokedEventArgs>(this.OnItemInvoked);
 
 		private async void OnLoaded() => await Task.CompletedTask;
 

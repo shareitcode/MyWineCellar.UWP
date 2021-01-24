@@ -39,6 +39,9 @@ namespace MyWineCellar.DAL.Migrations
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("Parcel")
                         .IsRequired()
                         .HasColumnType("TEXT");

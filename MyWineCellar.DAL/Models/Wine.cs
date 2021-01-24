@@ -16,5 +16,6 @@ namespace MyWineCellar.DAL.Models
 		public double Price { get; set; }
 		public DateTime AcquisitionDate { get; set; }
 		public string AcquisitionMeans { get; set; }
+		public byte[] Image { get; set; }
 	}
 }

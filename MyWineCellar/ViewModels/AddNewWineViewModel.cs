@@ -1,25 +1,28 @@
 ﻿using FluentValidation.Results;
+using MyWineCellar.DTO;
+using MyWineCellar.Extensions;
 using MyWineCellar.Helpers;
 using MyWineCellar.Models;
+using MyWineCellar.Repository;
 using MyWineCellar.Services;
 using MyWineCellar.Validators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using FluentValidation.Results;
 
 namespace MyWineCellar.ViewModels
 {
-    internal sealed class AddNewWineViewModel : BaseViewModel
+	internal sealed class AddNewWineViewModel : BaseViewModel
 	{
+		private ObservableCollection<WineListModel> Wines { get; }
+
 		private AddWineModel _wine = new AddWineModel();
 		public AddWineModel Wine
 		{
 			get => this._wine;
-			set => this.Set(ref _wine, value);
+			set => this.Set(ref this._wine, value);
 		}
 
 		public IEnumerable<string> WineColors { get; } = Constants.WineColors;
@@ -28,41 +31,50 @@ namespace MyWineCellar.ViewModels
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
 
+		private AddNewWineValidator AddNewWineValidator { get; } = new AddNewWineValidator();
+
+		public AddNewWineViewModel()
+		{
+			if (Session.Instance.IsExist("Wines"))
+				this.Wines = Session.Instance.Get<ObservableCollection<WineListModel>>("Wines");
+		}
+
 		public async Task AddNewWine()
 		{
 			try
 			{
-				AddWineModel wine = this.Wine.Clone();
-				ValidationResult validationResult = await AddNewWineValidator.GetValidator().ValidateAsync(wine);
+				// TODO: Try to move error validation responsibility to error object. The model inherit from error object
+				//ValidationResult validationResult = await this.Wine.GetValidationResultAsync();
+				ValidationResult validationResult = await this.AddNewWineValidator.ValidateAsync(this.Wine);
 				if (validationResult.IsValid)
-					NavigationService.GoBack();
-				else
-                    SetErrorMessages(wine, validationResult);
+				{
+					WineDto wineModelToDto = MapModels.Map<WineDto>(this.Wine);
 
-                //await WineRepository.Add(this.Wine);
-            }
+					await WineRepository.Add(wineModelToDto);
+
+					this.Wines.Add(MapModels.Map<WineListModel>(wineModelToDto));
+
+					Session.Instance.Update("Wines", this.Wines);
+
+					NavigationService.GoBack();
+				}
+				else
+					this.SetErrorMessages(validationResult);
+			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
 			}
 		}
 
-        private void SetErrorMessages(AddWineModel wine, ValidationResult validationResult)
-        {
-            wine.ClearErrorMessages();
-            foreach (ValidationFailure validationFailure in validationResult.Errors)
-            {
-                PropertyInfo winePropertyErrorMessage = GetWinePropertyInformationsByValidationPropertyName(validationFailure);
-                if (winePropertyErrorMessage != null)
-                    winePropertyErrorMessage.SetValue(wine, validationFailure.ErrorMessage);
-            }
-            this.Wine = wine;
-        }
+		private void SetErrorMessages(ValidationResult validationResult)
+		{
+			this.Wine.ClearErrorMessages();
 
-        private PropertyInfo GetWinePropertyInformationsByValidationPropertyName(ValidationFailure validationFailure)
-        {
-            return this.Wine.GetType().GetProperties().FirstOrDefault(wineProperty => wineProperty.Name.EndsWith(Constants.ErrorMessage)
-					&& wineProperty.Name.StartsWith(validationFailure.PropertyName));
-        }
-    }
+			foreach (ValidationFailure validationFailure in validationResult.Errors)
+				this.Wine.SetValueOfErrorMessagePropertyInformations(validationFailure);
+
+			this.OnPropertyChanged(nameof(this.Wine));
+		}
+	}
 }

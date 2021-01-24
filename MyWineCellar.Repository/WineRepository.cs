@@ -17,11 +17,6 @@ namespace MyWineCellar.Repository
 		{
 			await using MyWineCellarDbContext dbContext = new MyWineCellarDbContext();
 			return Mapper.Map<IEnumerable<WineDto>>(await dbContext.Wines.ToListAsync());
-
-			//using (SqliteConnection sqliteConnection = new SqliteConnection("FileName=" + path))
-			//{
-			//	return _mapper.Map<IEnumerable<WineDto>>(await sqliteConnection.GetAllAsync<Wine>());
-			//}
 		}
 
 		public static async Task<WineDto> GetById(long wineId)

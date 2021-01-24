@@ -24,5 +24,6 @@ namespace MyWineCellar.Helpers
 		};
 
 		internal static string ErrorMessage { get; } = "ErrorMessage";
+		internal static string RegexPatternImage { get; } = ".jpg|.jpeg|.png";
 	}
 }
