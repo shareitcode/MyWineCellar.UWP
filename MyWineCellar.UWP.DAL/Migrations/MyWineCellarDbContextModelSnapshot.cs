@@ -2,17 +2,15 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyWineCellar.DAL;
+using MyWineCellar.UWP.DAL;
 
 namespace MyWineCellar.DAL.Migrations
 {
 	[DbContext(typeof(MyWineCellarDbContext))]
-    [Migration("20201109184155_InitialCreate")]
-    partial class InitialCreate
+    partial class MyWineCellarDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

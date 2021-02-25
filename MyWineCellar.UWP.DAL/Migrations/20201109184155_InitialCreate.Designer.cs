@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyWineCellar.DAL;
+using MyWineCellar.UWP.DAL;
 
 namespace MyWineCellar.DAL.Migrations
 {

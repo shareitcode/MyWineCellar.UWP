@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{890D18D1-BE6C-4738-A0FC-A65B86C15F3A}</ProjectGuid>
+    <ProjectGuid>{2EF2CD7D-9A70-40E9-A886-B09AF7ED96CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyWineCellar.Repository</RootNamespace>
-    <AssemblyName>MyWineCellar.Repository</AssemblyName>
+    <RootNamespace>MyWineCellar.UWP.Repository</RootNamespace>
+    <AssemblyName>MyWineCellar.UWP.Repository</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -133,7 +133,7 @@
     <Compile Include="AutoMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WineRepository.cs" />
-    <EmbeddedResource Include="Properties\MyWineCellar.Repository.rd.xml" />
+    <EmbeddedResource Include="Properties\MyWineCellar.UWP.Repository.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper">
@@ -148,16 +148,6 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyWineCellar.DAL\MyWineCellar.DAL.csproj">
-      <Project>{b200ac1d-26e5-49d9-84b3-9d4d30206c0e}</Project>
-      <Name>MyWineCellar.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyWineCellar.DTO\MyWineCellar.DTO.csproj">
-      <Project>{79f95d20-3081-4c3e-8489-00c4a980757d}</Project>
-      <Name>MyWineCellar.DTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

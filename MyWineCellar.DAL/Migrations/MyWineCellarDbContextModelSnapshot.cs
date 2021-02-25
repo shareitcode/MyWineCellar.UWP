@@ -7,7 +7,7 @@ using MyWineCellar.DAL;
 
 namespace MyWineCellar.DAL.Migrations
 {
-    [DbContext(typeof(MyWineCellarDbContext))]
+	[DbContext(typeof(MyWineCellarDbContext))]
     partial class MyWineCellarDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
