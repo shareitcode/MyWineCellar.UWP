@@ -3,7 +3,7 @@ using MyWineCellar.Models;
 
 namespace MyWineCellar.Validators
 {
-	internal class ValidatorBase<TErrorModelBase> where TErrorModelBase : ErrorModelBase
+	internal abstract class ValidatorBase<ErrorModel> : AbstractValidator<ErrorModelBase> where ErrorModel : class
 	{
 	}
 }

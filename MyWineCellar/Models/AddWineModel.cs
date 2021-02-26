@@ -1,5 +1,4 @@
 ﻿using System;
-using MyWineCellar.Validators;
 
 namespace MyWineCellar.Models
 {

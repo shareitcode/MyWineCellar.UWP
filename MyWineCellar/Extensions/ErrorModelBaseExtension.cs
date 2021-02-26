@@ -1,10 +1,11 @@
-﻿using MyWineCellar.Helpers;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using MyWineCellar.Helpers;
+using MyWineCellar.Models;
+using MyWineCellar.Validators;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using FluentValidation.Results;
-using MyWineCellar.Models;
-using MyWineCellar.Validators;
 
 namespace MyWineCellar.Extensions
 {
@@ -30,9 +31,10 @@ namespace MyWineCellar.Extensions
 			return properties.FirstOrDefault(wineProperty => wineProperty.Name.EndsWith(Constants.ErrorMessage) && wineProperty.Name.StartsWith(propertyName));
 		}
 
-		//public static async Task<ValidationResult> GetValidationResultAsync(this ErrorModelBase obj)
-		//{
-		//	return await new ValidatorBase().ValidateAsync(obj);
-		//}
+		public static async Task<ValidationResult> GetValidationResultAsync<ModelValidator>(this ErrorModelBase obj) where ModelValidator : class
+		{
+			IValidator<ErrorModelBase> validator = ValidatorFactory.GetValidationResultAsync(typeof(ModelValidator).Name);
+			return await validator.ValidateAsync(obj);
+		}
 	}
 }

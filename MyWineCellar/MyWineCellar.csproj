@@ -153,6 +153,7 @@
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Validators\AddNewWineValidator.cs" />
     <Compile Include="Validators\ValidatorBase.cs" />
+    <Compile Include="Validators\ValidatorFactory.cs" />
     <Compile Include="ViewModels\AddNewWineViewModel.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\BaseViewModel.cs" />

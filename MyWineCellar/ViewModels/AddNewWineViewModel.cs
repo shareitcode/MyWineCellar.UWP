@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using FluentValidation.Results;
 
 namespace MyWineCellar.ViewModels
 {
@@ -32,8 +31,6 @@ namespace MyWineCellar.ViewModels
 
 		public ICommand AddNewWineCommand => new RelayCommand(async () => await this.AddNewWine());
 
-		private AddNewWineValidator AddNewWineValidator { get; } = new AddNewWineValidator();
-
 		public AddNewWineViewModel()
 		{
 			if (Session.Instance.IsExist("Wines"))
@@ -44,9 +41,7 @@ namespace MyWineCellar.ViewModels
 		{
 			try
 			{
-				// TODO: Try to move error validation responsibility to error object. The model inherit from error object
-				//ValidationResult validationResult = await this.Wine.GetValidationResultAsync();
-				ValidationResult validationResult = await this.AddNewWineValidator.ValidateAsync(this.Wine);
+				ValidationResult validationResult = await this.Wine.GetValidationResultAsync<AddNewWineValidator>();
 				if (validationResult.IsValid)
 				{
 					WineDto wineModelToDto = MapModels.Map<WineDto>(this.Wine);
