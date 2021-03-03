@@ -6,7 +6,7 @@ namespace MyWineCellar.Validators
 {
 	internal sealed class ValidatorFactory
 	{
-		internal static IValidator<ErrorModelBase> GetValidationResultAsync(string modelValidatorTypeName)
+		internal static IValidator<ModelBase> GetValidationResultAsync(string modelValidatorTypeName)
 		{
 			if (modelValidatorTypeName.Equals(nameof(AddNewWineValidator)))
 				return new AddNewWineValidator();

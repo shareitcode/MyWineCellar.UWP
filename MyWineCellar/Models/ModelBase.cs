@@ -1,6 +1,6 @@
 ﻿namespace MyWineCellar.Models
 {
-	internal interface ErrorModelBase
+	internal interface ModelBase
 	{
 	}
 }

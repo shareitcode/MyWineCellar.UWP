@@ -145,7 +145,7 @@
     <Compile Include="Helpers\UserInterfaceHelper.cs" />
     <Compile Include="Models\AddWineModel.cs" />
     <Compile Include="Helpers\AutoMapperProfile.cs" />
-    <Compile Include="Models\ErrorModelBase.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\WineListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Session.cs" />

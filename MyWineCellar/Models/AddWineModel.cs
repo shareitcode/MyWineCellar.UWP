@@ -2,7 +2,7 @@
 
 namespace MyWineCellar.Models
 {
-	internal sealed class AddWineModel : ErrorModelBase
+	internal sealed class AddWineModel : ModelBase
 	{
 		public long Id { get; set; }
 		public string Producer { get; set; }
@@ -27,7 +27,5 @@ namespace MyWineCellar.Models
 		public string AcquisitionMeansErrorMessage { get; set; }
 		public byte[] Image { get; set; }
 		public string ImageNameWithExtension { get; set; }
-
-		public AddWineModel Clone() => this.MemberwiseClone() as AddWineModel;
 	}
 }
